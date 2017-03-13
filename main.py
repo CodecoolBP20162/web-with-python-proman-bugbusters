@@ -6,7 +6,7 @@ app.secret_key = 'development key'
 
 @app.route("/")
 def home():
-    return render_template("")
+    return render_template("index_test.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
