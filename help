@@ -1,4 +1,4 @@
------------------------- I. Save and get item from localhost
+------------------------ I. Save and get item from local storage
 
 <!DOCTYPE html>
 <html>
@@ -22,9 +22,12 @@ if (typeof(Storage) !== "undefined") {
 
     // Retrieve
     ------------------------ Retrieve and convert to dictionary
-var boards = JSON.parse(localStorage.getItem("boards"));
-alert(boards.list[0]);
+    var boards = JSON.parse(localStorage.getItem("boards"));
+    alert(boards.list[0]);
 
+    // Remove
+    ------------------------ Remove item from local storage
+    localStorage.removeItem('boards');
 
 } else {
     document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
