@@ -1,0 +1,37 @@
+------------------------ I. Save and get item from localhost
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<div id="result"></div>
+
+<script>
+// Check browser support
+if (typeof(Storage) !== "undefined") {
+
+	// Create
+	------------------------ Create dictionary
+	var boards = {};
+    boards.title = "Matyi";
+    boards.list = ['First element', 'second element'];
+
+    // Store
+    ------------------------ Convert to JSON file and save to storage
+    localStorage.boards = JSON.stringify(boards);
+
+    // Retrieve
+    ------------------------ Retrieve and convert to dictionary
+var boards = JSON.parse(localStorage.getItem("boards"));
+alert(boards.list[0]);
+
+
+} else {
+    document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+}
+</script>
+
+</body>
+</html>
+
+------------------------ I. END
