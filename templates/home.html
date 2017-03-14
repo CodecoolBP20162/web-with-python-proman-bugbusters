@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link href="http://getbootstrap.com/examples/starter-template" rel="stylesheet"/>
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="http://getbootstrap.com/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet"/>
+    <link href="http://getbootstrap.com/examples/starter-template/starter-template.css" rel="stylesheet"/>
+    <link href="../static/home.css" rel="stylesheet"/>
+    <script href="http://johnny.github.io/jquery-sortable/js/jquery-sortable-min.js"></script>
+</head>
+<body>
+<div>
+    <nav id="header" class="navbar navbar-fixed-top">
+        <div id="header-container" class="container navbar-container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                        aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a id="brand" class="navbar-brand" href="#">ProMan</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="">Add New Board</a></li>
+                </ul>
+            </div><!-- /.nav-collapse -->
+        </div><!-- /.container -->
+    </nav><!-- /.navbar -->
+</div>
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <div class="project project-default draggable" draggable="true" data-toggle="modal" data-target=".board-modal">
+                <div class="project-content" >
+                    <h3 class="lead">
+                        Board1
+                    </h3>
+                    <p>
+                        Here comes some description
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <div class="project project-success draggable" draggable="true" data-toggle="modal" data-target=".board-modal">
+                <div class="project-content">
+                    <h3 class="lead">
+                        Board 2
+                    </h3>
+                    <p>
+                        Here comes some description
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <div class="project project-radius project-primary draggable" draggable="true" data-toggle="modal" data-target=".board-modal">
+                <div class="project-content">
+                    <h3 class="lead">
+                        Board 3
+                    </h3>
+                    <p>
+                        Here comes some description
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <div class="project project-info draggable" draggable="true" data-toggle="modal" data-target=".board-modal">
+                <div class="project-content">
+                    <h3 class="lead">
+                        Board 4
+                    </h3>
+                    <p>
+                        Here comes some description
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <div class="project project-radius project-warning draggable" draggable="true" data-toggle="modal" data-target=".board-modal">
+                <div class="project-content">
+                    <h3 class="lead">
+                        Board 5
+                    </h3>
+                    <p>
+                        Here comes some description
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <div class="project project-radius project-danger draggable" draggable="true" data-toggle="modal" data-target=".board-modal">
+                <div class="project-content">
+                    <h3 class="lead">
+                        Board 6
+                    </h3>
+                    <p>
+                        Here comes some description
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div><!--/row-->
+</div><!--/container -->
+<!-- Board modal -->
+<div class="modal fade board-modal" tabindex="-1" role="dialog" aria-labelledby="boardLabel" >
+    <div class="modal-dialog modal-lg" role="document" style="width: 1200px">
+        <div class="modal-content">
+
+            <div class="container">
+                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" >
+                    <div class="project project-radius project-danger draggable" draggable="true">
+                        <div class="project-content">
+                            <h3 class="lead">
+                                Card 1
+                            </h3>
+                            <p>
+                                Here comes some description
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" >
+                    <div class="project project-radius project-danger draggable" draggable="true">
+                        <div class="project-content">
+                            <h3 class="lead">
+                                Card 2
+                            </h3>
+                            <p>
+                                Here comes some description
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                    <div class="project project-radius project-danger draggable" draggable="true">
+                        <div class="project-content">
+                            <h3 class="lead">
+                                Card 3
+                            </h3>
+                            <p>
+                                Here comes some description
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                    <div class="project project-radius project-danger draggable" draggable="true">
+                        <div class="project-content">
+                            <h3 class="lead">
+                                Card 4
+                            </h3>
+                            <p>
+                                Here comes some description
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                    <div class="project project-radius project-danger draggable" draggable="true">
+                        <div class="project-content">
+                            <h3 class="lead">
+                                Card 5
+                            </h3>
+                            <p>
+                                Here comes some description
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                    <div class="project project-radius project-danger draggable" draggable="true">
+                        <div class="project-content">
+                            <h3 class="lead">
+                                Card 6
+                            </h3>
+                            <p>
+                                Here comes some description
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                    <div class="project project-radius project-danger draggable" draggable="true">
+                        <div class="project-content">
+                            <h3 class="lead">
+                                Card 7
+                            </h3>
+                            <p>
+                                Here comes some description
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <button class="btn btn-default btn-lg" data-toggle="modal" data-target=".board-modal"
+                        style="margin-bottom: 1em">Return
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='home.js') }}"></script>
+<script src="{{ url_for('static', filename='dragndrop.js') }}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="{{ url_for('static', filename='bootstrap.min.js') }}"></script>
+
+</body>
+</html>
