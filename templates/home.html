@@ -38,8 +38,9 @@
     <div class="row">
 
         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-            <div class="project project-default draggable" draggable="true" data-toggle="modal" data-target=".board-modal">
-                <div class="project-content" >
+            <div class="project project-grey draggable" draggable="true" data-toggle="modal"
+                 data-target=".board-modal">
+                <div class="project-content">
                     <h3 class="lead">
                         Board1
                     </h3>
@@ -51,7 +52,8 @@
         </div>
 
         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-            <div class="project project-success draggable" draggable="true" data-toggle="modal" data-target=".board-modal">
+            <div class="project project-green draggable" draggable="true" data-toggle="modal"
+                 data-target=".board-modal">
                 <div class="project-content">
                     <h3 class="lead">
                         Board 2
@@ -64,7 +66,8 @@
         </div>
 
         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-            <div class="project project-radius project-primary draggable" draggable="true" data-toggle="modal" data-target=".board-modal">
+            <div class="project project-radius project-blue draggable" draggable="true" data-toggle="modal"
+                 data-target=".board-modal">
                 <div class="project-content">
                     <h3 class="lead">
                         Board 3
@@ -77,7 +80,7 @@
         </div>
 
         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-            <div class="project project-info draggable" draggable="true" data-toggle="modal" data-target=".board-modal">
+            <div class="project project-lightblue draggable" draggable="true" data-toggle="modal" data-target=".board-modal">
                 <div class="project-content">
                     <h3 class="lead">
                         Board 4
@@ -90,7 +93,8 @@
         </div>
 
         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-            <div class="project project-radius project-warning draggable" draggable="true" data-toggle="modal" data-target=".board-modal">
+            <div class="project project-radius project-orange draggable" draggable="true" data-toggle="modal"
+                 data-target=".board-modal">
                 <div class="project-content">
                     <h3 class="lead">
                         Board 5
@@ -103,7 +107,8 @@
         </div>
 
         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-            <div class="project project-radius project-danger draggable" draggable="true" data-toggle="modal" data-target=".board-modal">
+            <div class="project project-radius project-red draggable" draggable="true" data-toggle="modal"
+                 data-target=".board-modal">
                 <div class="project-content">
                     <h3 class="lead">
                         Board 6
@@ -127,11 +132,12 @@
             <div class="container">
                 <!-- new cards coloumn -->
                 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                    <div class="card-holder status-new">
-                        <div class="project project-radius project-danger">
+                    <div class="card-holder" id="status-new">
+
+                        <div class="project project-radius project-red draggable" draggable="true">
                             <div class="project-content">
                                 <h3 class="lead">
-                                    Card 1
+                                    Card 2
                                 </h3>
                                 <p>
                                     Here comes some description
@@ -139,24 +145,20 @@
                             </div>
                         </div>
 
-                        <div class="project project-radius project-danger">
+                        <div class="project project-radius project-green draggable" draggable="true">
                             <div class="project-content">
                                 <h3 class="lead">
-                                    Card 1
+                                    Card 3
                                 </h3>
                                 <p>
                                     Here comes some description
                                 </p>
                             </div>
                         </div>
-
-                        <div class="project project-radius project-danger">
+                        <div class="project project-radius project-blue draggable" draggable="true">
                             <div class="project-content">
-                                <h3 class="lead">
-                                    Card 1
-                                </h3>
                                 <p>
-                                    Here comes some description
+
                                 </p>
                             </div>
                         </div>
@@ -164,8 +166,8 @@
                 </div>
                 <!-- planning cards coloumn -->
                 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                    <div class="card-holder status-planning">
-                        <div class="project project-radius project-danger">
+                    <div class="card-holder" id="status-planning">
+                        <div class="project project-radius project-lightblue draggable" draggable="true">
                             <div class="project-content">
                                 <h3 class="lead">
                                     Card 1
@@ -176,7 +178,7 @@
                             </div>
                         </div>
 
-                        <div class="project project-radius project-danger">
+                        <div class="project project-radius project-orange draggable" draggable="true">
                             <div class="project-content">
                                 <h3 class="lead">
                                     Card 1
@@ -187,7 +189,7 @@
                             </div>
                         </div>
 
-                        <div class="project project-radius project-danger">
+                        <div class="project project-radius project-green draggable" draggable="true">
                             <div class="project-content">
                                 <h3 class="lead">
                                     Card 1
@@ -202,8 +204,8 @@
                 </div>
                 <!-- in-progress cards coloumn -->
                 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                    <div class="card-holder status-in-progress">
-                        <div class="project project-radius project-danger">
+                    <div class="card-holder" id="status-in-progress">
+                        <div class="project project-radius project-red draggable" draggable="true">
                             <div class="project-content">
                                 <h3 class="lead">
                                     Card 1
@@ -214,7 +216,7 @@
                             </div>
                         </div>
 
-                        <div class="project project-radius project-danger">
+                        <div class="project project-radius project-blue draggable" draggable="true">
                             <div class="project-content">
                                 <h3 class="lead">
                                     Card 1
@@ -225,7 +227,7 @@
                             </div>
                         </div>
 
-                        <div class="project project-radius project-danger">
+                        <div class="project project-radius project-orange draggable" draggable="true">
                             <div class="project-content">
                                 <h3 class="lead">
                                     Card 1
@@ -240,8 +242,8 @@
                 </div>
                 <!-- done cards coloumn -->
                 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                    <div class="card-holder status-done">
-                        <div class="project project-radius project-danger">
+                    <div class="card-holder" id="status-done">
+                        <div class="project project-radius project-lightblue draggable" draggable="true">
                             <div class="project-content">
                                 <h3 class="lead">
                                     Card 1
@@ -252,7 +254,7 @@
                             </div>
                         </div>
 
-                        <div class="project project-radius project-danger">
+                        <div class="project project-radius project-red draggable" draggable="true">
                             <div class="project-content">
                                 <h3 class="lead">
                                     Card 1
@@ -263,7 +265,7 @@
                             </div>
                         </div>
 
-                        <div class="project project-radius project-danger">
+                        <div class="project project-radius project-orange draggable" draggable="true">
                             <div class="project-content">
                                 <h3 class="lead">
                                     Card 1
@@ -276,8 +278,6 @@
 
                     </div>
                 </div>
-
-
             </div>
         </div>
         <div class="clearfix"></div>
