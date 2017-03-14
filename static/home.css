@@ -56,13 +56,14 @@
 }
 
 .project {
-    min-height: 300px;
+    min-height: 150px;
     height: auto;
 }
 
 .project {
     background: #fff;
-    border: 1px solid #ddd;
+    border: 5px solid #ddd;
+    border-radius: 5px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     margin: 15px 0;
     overflow: hidden;
