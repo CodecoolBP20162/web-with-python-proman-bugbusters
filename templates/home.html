@@ -8,7 +8,6 @@
     <link href="http://getbootstrap.com/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet"/>
     <link href="http://getbootstrap.com/examples/starter-template/starter-template.css" rel="stylesheet"/>
     <link href="../static/home.css" rel="stylesheet"/>
-    <script href="../static/home.js"></script>
     <script href="http://johnny.github.io/jquery-sortable/js/jquery-sortable-min.js"></script>
 </head>
 <body>
@@ -39,7 +38,7 @@
     <div class="row">
 
         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-            <div class="project project-default" data-toggle="modal" data-target=".board-modal">
+            <div class="project project-default draggable" draggable="true" data-toggle="modal" data-target=".board-modal">
                 <div class="project-content" >
                     <h3 class="lead">
                         Board1
@@ -51,8 +50,8 @@
             </div>
         </div>
 
-        <div class="col-xs-3">
-            <div class="project project-success">
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <div class="project project-success draggable" draggable="true" data-toggle="modal" data-target=".board-modal">
                 <div class="project-content">
                     <h3 class="lead">
                         Board 2
@@ -64,8 +63,8 @@
             </div>
         </div>
 
-        <div class="col-xs-3">
-            <div class="project project-radius project-primary">
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <div class="project project-radius project-primary draggable" draggable="true" data-toggle="modal" data-target=".board-modal">
                 <div class="project-content">
                     <h3 class="lead">
                         Board 3
@@ -77,8 +76,8 @@
             </div>
         </div>
 
-        <div class="col-xs-3">
-            <div class="project project-info">
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <div class="project project-info draggable" draggable="true" data-toggle="modal" data-target=".board-modal">
                 <div class="project-content">
                     <h3 class="lead">
                         Board 4
@@ -90,8 +89,8 @@
             </div>
         </div>
 
-        <div class="col-xs-3">
-            <div class="project project-radius project-warning">
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <div class="project project-radius project-warning draggable" draggable="true" data-toggle="modal" data-target=".board-modal">
                 <div class="project-content">
                     <h3 class="lead">
                         Board 5
@@ -103,8 +102,8 @@
             </div>
         </div>
 
-        <div class="col-xs-3">
-            <div class="project project-radius project-danger">
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <div class="project project-radius project-danger draggable" draggable="true" data-toggle="modal" data-target=".board-modal">
                 <div class="project-content">
                     <h3 class="lead">
                         Board 6
@@ -124,8 +123,8 @@
         <div class="modal-content">
 
             <div class="container">
-                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                    <div class="project project-radius project-danger">
+                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" >
+                    <div class="project project-radius project-danger draggable" draggable="true">
                         <div class="project-content">
                             <h3 class="lead">
                                 Card 1
@@ -136,8 +135,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                    <div class="project project-radius project-danger">
+                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" >
+                    <div class="project project-radius project-danger draggable" draggable="true">
                         <div class="project-content">
                             <h3 class="lead">
                                 Card 2
@@ -149,7 +148,7 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                    <div class="project project-radius project-danger">
+                    <div class="project project-radius project-danger draggable" draggable="true">
                         <div class="project-content">
                             <h3 class="lead">
                                 Card 3
@@ -161,10 +160,10 @@
                     </div>
                 </div>
                  <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                    <div class="project project-radius project-danger">
+                    <div class="project project-radius project-danger draggable" draggable="true">
                         <div class="project-content">
                             <h3 class="lead">
-                                Card 3
+                                Card 4
                             </h3>
                             <p>
                                 Here comes some description
@@ -173,10 +172,10 @@
                     </div>
                 </div>
                  <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                    <div class="project project-radius project-danger">
+                    <div class="project project-radius project-danger draggable" draggable="true">
                         <div class="project-content">
                             <h3 class="lead">
-                                Card 3
+                                Card 5
                             </h3>
                             <p>
                                 Here comes some description
@@ -185,10 +184,10 @@
                     </div>
                 </div>
                  <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                    <div class="project project-radius project-danger">
+                    <div class="project project-radius project-danger draggable" draggable="true">
                         <div class="project-content">
                             <h3 class="lead">
-                                Card 3
+                                Card 6
                             </h3>
                             <p>
                                 Here comes some description
@@ -197,22 +196,10 @@
                     </div>
                 </div>
                  <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                    <div class="project project-radius project-danger">
+                    <div class="project project-radius project-danger draggable" draggable="true">
                         <div class="project-content">
                             <h3 class="lead">
-                                Card 3
-                            </h3>
-                            <p>
-                                Here comes some description
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                    <div class="project project-radius project-danger">
-                        <div class="project-content">
-                            <h3 class="lead">
-                                Card 3
+                                Card 7
                             </h3>
                             <p>
                                 Here comes some description
@@ -230,6 +217,8 @@
     </div>
 </div>
 
+<script src="{{ url_for('static', filename='home.js') }}"></script>
+<script src="{{ url_for('static', filename='dragndrop.js') }}"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="{{ url_for('static', filename='bootstrap.min.js') }}"></script>
 

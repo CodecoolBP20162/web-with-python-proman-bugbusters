@@ -7,9 +7,9 @@
 }
 
 .navbar.navbar-fixed-top.fixed-theme {
-    background-color: #222;
+    background-color: lightslategrey;
     border-color: #080808;
-    box-shadow: 0 0 5px rgba(0,0,0,.8);
+    box-shadow: 0 0 5px rgba(0, 0, 0, .8);
 }
 
 .navbar-brand.fixed-theme {
@@ -24,73 +24,140 @@
 .navbar-container.fixed-theme,
 .navbar.navbar-fixed-top.fixed-theme,
 .navbar-brand,
-.navbar-container{
+.navbar-container {
     transition: 0.8s;
-    -webkit-transition:  0.8s;
+    -webkit-transition: 0.8s;
 }
 
-.shape{
-	border-style: solid; border-width: 0 70px 40px 0; float:right; height: 0px; width: 0px;
-	-ms-transform:rotate(360deg); /* IE 9 */
-	-o-transform: rotate(360deg);  /* Opera 10.5 */
-	-webkit-transform:rotate(360deg); /* Safari and Chrome */
-	transform:rotate(360deg);
+.shape {
+    border-style: solid;
+    border-width: 0 70px 40px 0;
+    float: right;
+    height: 0px;
+    width: 0px;
+    -ms-transform: rotate(360deg); /* IE 9 */
+    -o-transform: rotate(360deg); /* Opera 10.5 */
+    -webkit-transform: rotate(360deg); /* Safari and Chrome */
+    transform: rotate(360deg);
 }
 
-.shape-text{
-    color:#fff; font-size:12px; font-weight:bold; position:relative; right:-40px; top:2px; white-space: nowrap;
-	-ms-transform:rotate(30deg); /* IE 9 */
-	-o-transform: rotate(360deg);  /* Opera 10.5 */
-	-webkit-transform:rotate(30deg); /* Safari and Chrome */
-	transform:rotate(30deg);
+.shape-text {
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+    position: relative;
+    right: -40px;
+    top: 2px;
+    white-space: nowrap;
+    -ms-transform: rotate(30deg); /* IE 9 */
+    -o-transform: rotate(360deg); /* Opera 10.5 */
+    -webkit-transform: rotate(30deg); /* Safari and Chrome */
+    transform: rotate(30deg);
 }
 
 .project {
-    min-height:300px;
-    height:auto;
+    min-height: 300px;
+    height: auto;
 }
 
-.project{
-    background:#fff; border:1px solid #ddd; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); margin: 15px 0; overflow:hidden;
+.project {
+    background: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    margin: 15px 0;
+    overflow: hidden;
 }
 
-
-.project-default {    border-color: #999999; }
-.project-default .shape{
-	border-color: transparent #999999 transparent transparent;
-	border-color: rgba(255,255,255,0) #999999 rgba(255,255,255,0) rgba(255,255,255,0);
+.project-default {
+    border-color: #999999;
 }
 
-.project-danger {    border-color: #d9534f; }
-.project-danger .shape{
-	border-color: transparent #d9534f transparent transparent;
-	border-color: rgba(255,255,255,0) #d9534f rgba(255,255,255,0) rgba(255,255,255,0);
+.project-default .shape {
+    border-color: transparent #999999 transparent transparent;
+    border-color: rgba(255, 255, 255, 0) #999999 rgba(255, 255, 255, 0) rgba(255, 255, 255, 0);
 }
 
-.project-success {	border-color: #5cb85c; }
-.project-success .shape{
-	border-color: transparent #5cb85c transparent transparent;
-	border-color: rgba(255,255,255,0) #5cb85c rgba(255,255,255,0) rgba(255,255,255,0);
+.project-danger {
+    border-color: #d9534f;
 }
 
-.project-primary {	border-color: #428bca; }
-.project-primary .shape{
-	border-color: transparent #428bca transparent transparent;
-	border-color: rgba(255,255,255,0) #428bca rgba(255,255,255,0) rgba(255,255,255,0);
+.project-danger .shape {
+    border-color: transparent #d9534f transparent transparent;
+    border-color: rgba(255, 255, 255, 0) #d9534f rgba(255, 255, 255, 0) rgba(255, 255, 255, 0);
 }
 
-.project-info {	border-color: #5bc0de; }
-.project-info .shape{
-	border-color: transparent #5bc0de transparent transparent;
-	border-color: rgba(255,255,255,0) #5bc0de rgba(255,255,255,0) rgba(255,255,255,0);
+.project-success {
+    border-color: #5cb85c;
 }
 
-.project-warning {	border-color: #f0ad4e; }
-.project-warning .shape{
-	border-color: transparent #f0ad4e transparent transparent;
-	border-color: rgba(255,255,255,0) #f0ad4e rgba(255,255,255,0) rgba(255,255,255,0);
+.project-success .shape {
+    border-color: transparent #5cb85c transparent transparent;
+    border-color: rgba(255, 255, 255, 0) #5cb85c rgba(255, 255, 255, 0) rgba(255, 255, 255, 0);
+}
+
+.project-primary {
+    border-color: #428bca;
+}
+
+.project-primary .shape {
+    border-color: transparent #428bca transparent transparent;
+    border-color: rgba(255, 255, 255, 0) #428bca rgba(255, 255, 255, 0) rgba(255, 255, 255, 0);
+}
+
+.project-info {
+    border-color: #5bc0de;
+}
+
+.project-info .shape {
+    border-color: transparent #5bc0de transparent transparent;
+    border-color: rgba(255, 255, 255, 0) #5bc0de rgba(255, 255, 255, 0) rgba(255, 255, 255, 0);
+}
+
+.project-warning {
+    border-color: #f0ad4e;
+}
+
+.project-warning .shape {
+    border-color: transparent #f0ad4e transparent transparent;
+    border-color: rgba(255, 255, 255, 0) #f0ad4e rgba(255, 255, 255, 0) rgba(255, 255, 255, 0);
 }
 
 .project-content {
-    padding:0 20px 10px;
+    padding: 0 20px 10px;
+}
+
+.draggable {
+    will-change: transform;
+    cursor: move;
+    transition: all 200ms;
+    user-select: none;
+    margin: 10px auto;
+    position: relative;
+
+&
+:after {
+    right: 7px;
+    position: absolute;
+    cursor: pointer;
+    line-height: 5;
+    transition: all 200ms;
+    transition-timing-function: cubic-bezier(0.48, 0.72, 0.62, 1.50);
+    transform: translateX(120%);
+    opacity: 1;
+}
+
+&
+:hover {
+
+&
+:after {
+    opacity: 1;
+    transform: translate(0);
+}
+
+}
+}
+}
+}
+
 }
