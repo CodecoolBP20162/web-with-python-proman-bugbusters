@@ -50,7 +50,7 @@ var getBoards = function(data) {
         var projectContent = createProjectContent(allBoards[i]);
         var ediv = decorateContext("project project-grey draggable draggable='true' data-toggle='modal' data-target='.board-modal'", projectContent);
         var div = decorateContext("col-lg-3 col-md-4 col-sm-6 col-xs-12", ediv);
-        var count = "board"+j.toString();
+        var count = "board-"+j.toString();
         var adiv = decorateContext(count, div);
         document.getElementById("result").appendChild(adiv);
         var cards = getCards(allBoards[i].cards);
@@ -94,8 +94,8 @@ var getRandomColor = function () {
     return rand;
 };
 
-var getCards = function(cards, j) {
-
+var getCards = function(cards) {
+    var j = 0;
     for (var card in cards){
         var projectContent = document.createElement("div");
         projectContent.className = "project-content";
@@ -110,7 +110,7 @@ var getCards = function(cards, j) {
         var decorated = decorateContext(color, projectContent);
         decorated.setAttribute("draggable", true);
         decorated = decorateContext("col-lg-3 col-md-4 col-sm-6 col-xs-12", decorated);
-        var count = "card"+j.toString();
+        var count = "card-"+j.toString();
         decorated = decorateContext(count, decorated);
         document.getElementById("result").appendChild(decorated);
         j += 1;
