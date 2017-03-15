@@ -2,9 +2,17 @@
  * Created by matyi on 2017.03.15..
  */
 $(document).ready(function () {
-   $('div').click(function () {
-         var jq_boards = retrieveData("boards");
-         console.log(jq_boards);
-   });
+    var jqBoards = retrieveData('boards');
+    console.log(jqBoards);
+    for (var board in jqBoards) {
+        console.log('.'+board);
+        $('.'+ board).click(function () {
+            console.log('2');
+            for (card in jqBoards[board]) {
+                $('.' + card).toggle();
+                console.log('.'+card);
+            }
+        });
+    }
 });
 
