@@ -49,6 +49,7 @@ var getBoards = function(data) {
         var adiv = decorateContext(count, div);
         document.getElementById("result").appendChild(adiv);
         getCards(allBoards[i].cards);
+
         j += 1;
   }
 };
@@ -129,14 +130,12 @@ function Board(title, description) {
     this.cards = [];
 };
 
-
 function Card(title) {
     this.title = title;
     this.status = "status-new";
     this.timestamp = new Date().toLocaleString();
     this.elements = [];
 };
-
 
 function  addNewBoard() {
     var boards = retrieveData("boards");
@@ -149,7 +148,6 @@ function  addNewBoard() {
     localStorage.boards = JSON.stringify(boards);
 };
 
-// generateData();
+generateData();
 var boards = retrieveData("boards");
 getBoards("boards");
-//document.getElementById("result").outerHTML = boards.board1.cards[0].modified;
