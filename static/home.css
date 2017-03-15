@@ -3,7 +3,7 @@
 }
 
 .navbar-container {
-    padding: 10px 0 70px 0;
+    padding: 10px 0 10px 0;
 }
 
 .navbar.navbar-fixed-top.fixed-theme {
@@ -70,57 +70,27 @@
 }
 
 .project-grey {
-    border-color: #999999;
-}
-
-.project-grey .shape {
-    border-color: transparent #999999 transparent transparent;
-    border-color: rgba(255, 255, 255, 0) #999999 rgba(255, 255, 255, 0) rgba(255, 255, 255, 0);
+    border-color: #95a5a6;
 }
 
 .project-red {
-    border-color: #d9534f;
-}
-
-.project-red .shape {
-    border-color: transparent #d9534f transparent transparent;
-    border-color: rgba(255, 255, 255, 0) #d9534f rgba(255, 255, 255, 0) rgba(255, 255, 255, 0);
+    border-color: #5F0F40;
 }
 
 .project-green {
-    border-color: #5cb85c;
-}
-
-.project-green .shape {
-    border-color: transparent #5cb85c transparent transparent;
-    border-color: rgba(255, 255, 255, 0) #5cb85c rgba(255, 255, 255, 0) rgba(255, 255, 255, 0);
+    border-color: #9A031E;
 }
 
 .project-blue {
-    border-color: #428bca;
-}
-
-.project-blue .shape {
-    border-color: transparent #428bca transparent transparent;
-    border-color: rgba(255, 255, 255, 0) #428bca rgba(255, 255, 255, 0) rgba(255, 255, 255, 0);
+    border-color: #FB8B24;
 }
 
 .project-lightblue {
-    border-color: #5bc0de;
-}
-
-.project-lightblue .shape {
-    border-color: transparent #5bc0de transparent transparent;
-    border-color: rgba(255, 255, 255, 0) #5bc0de rgba(255, 255, 255, 0) rgba(255, 255, 255, 0);
+    border-color: #E36414;
 }
 
 .project-orange {
-    border-color: #f0ad4e;
-}
-
-.project-orange .shape {
-    border-color: transparent #f0ad4e transparent transparent;
-    border-color: rgba(255, 255, 255, 0) #f0ad4e rgba(255, 255, 255, 0) rgba(255, 255, 255, 0);
+    border-color: #0F4C5C;
 }
 
 .project-content {
@@ -167,4 +137,24 @@
 	padding: 1em;
 	margin:1em;
 	border-radius: 3px;
+}
+
+#status-new {
+    background-color: #FDE3A7;
+}
+#status-planning {
+    background-color: #C5EFF7;
+}
+#status-in-progress {
+    background-color: #87D37C;
+}
+#status-done {
+    background-color: #3FC380;
+}
+
+.header {
+    text-align: center;
+    font-weight: bolder;
+    font-size: large;
+    font-family: "Verdana";
 }
