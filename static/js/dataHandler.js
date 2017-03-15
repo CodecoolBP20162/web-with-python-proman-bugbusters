@@ -62,9 +62,9 @@ var createProjectContent = function (board) {
     h3.appendChild(text);
     var p = document.createElement("p");
     var description = document.createTextNode(board.description);
+    p.appendChild(description);
     var time = decorateContext("time", document.createTextNode(board.timestamp));
     var cards = decorateContext("cards", document.createTextNode(board.cards.length));
-    p.appendChild(description);
     projectContent.appendChild(h3);
     projectContent.appendChild(p);
     projectContent.appendChild(time);
@@ -79,12 +79,11 @@ var decorateContext = function(name, context) {
     return div
 };
 
-var getCards = function(cards) {
-    for (var i in cards){
-        
-    }
+var getRandomColor = function () {
+    var myArray = ["grey", "red", "green", "blue", "lightblue", "orange"];
+    var rand = myArray[Math.floor(Math.random() * myArray.length)];
+    return rand;
 };
-
 
 generateData();
 var boards = retrieveData("boards");
