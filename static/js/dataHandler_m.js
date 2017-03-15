@@ -17,15 +17,33 @@ var generateData = function () {
         var boards = {};
         boards.board1 = { title: "Board #1", description: "First board", timestamp: new Date().toLocaleString(), cards: [] };
         boards.board1.cards = [{}, {}, {}];
-        boards.board1.cards[0] = { title: "First card", status: "status-new", elements: [1, 2, 3, 10], modified: new Date().toLocaleString() };
-        boards.board1.cards[1] = { title: "Second card", status: "status-new", elements: [4, 5, 6], modified: new Date().toLocaleString() };
-        boards.board1.cards[2] = { title: "Third card", status: "status-new", elements: [7, 8, 9], modified: new Date().toLocaleString() };
+        boards.board1.cards[0] = { title: "First card", status: "new", elements: [1, 2, 3, 10], modified: new Date().toLocaleString() };
+        boards.board1.cards[1] = { title: "Second card", status: "new", elements: [4, 5, 6], modified: new Date().toLocaleString() };
+        boards.board1.cards[2] = { title: "Third card", status: "new", elements: [7, 8, 9], modified: new Date().toLocaleString() };
 
         boards.board2 = { title: "Board #2", description: "Second board", timestamp: new Date().toLocaleString(), cards: [] };
         boards.board2.cards = [{}, {}, {}];
-        boards.board2.cards[0] = { title: "First card", status: "status-new", elements: [1, 2, 3, 20], modified: new Date().toLocaleString() };
-        boards.board2.cards[1] = { title: "Second card", status: "status-new", elements: [4, 5, 6], modified: new Date().toLocaleString() };
-        boards.board2.cards[2] = { title: "Third card", status: "status-new", elements: [7, 8, 9], modified: new Date().toLocaleString() };
+        boards.board2.cards[0] = { title: "First card", status: "new", elements: [1, 2, 3, 20], modified: new Date().toLocaleString() };
+        boards.board2.cards[1] = { title: "Second card", status: "new", elements: [4, 5, 6], modified: new Date().toLocaleString() };
+        boards.board2.cards[2] = { title: "Third card", status: "new", elements: [7, 8, 9], modified: new Date().toLocaleString() };
+
+        boards.board3 = { title: "Board #3", description: "Third board", timestamp: new Date().toLocaleString(), cards: [] };
+        boards.board3.cards = [{}, {}, {}];
+        boards.board3.cards[0] = { title: "First card", status: "new", elements: [1, 2, 3, 20], modified: new Date().toLocaleString() };
+        boards.board3.cards[1] = { title: "Second card", status: "new", elements: [4, 5, 6], modified: new Date().toLocaleString() };
+        boards.board3.cards[2] = { title: "Third card", status: "new", elements: [7, 8, 9], modified: new Date().toLocaleString() };
+
+        boards.board4 = { title: "Board #4", description: "Fourth board", timestamp: new Date().toLocaleString(), cards: [] };
+        boards.board4.cards = [{}, {}, {}];
+        boards.board4.cards[0] = { title: "First card", status: "new", elements: [1, 2, 3, 20], modified: new Date().toLocaleString() };
+        boards.board4.cards[1] = { title: "Second card", status: "new", elements: [4, 5, 6], modified: new Date().toLocaleString() };
+        boards.board4.cards[2] = { title: "Third card", status: "new", elements: [7, 8, 9], modified: new Date().toLocaleString() };
+
+        boards.board5 = { title: "Board #5", description: "Fifth board", timestamp: new Date().toLocaleString(), cards: [] };
+        boards.board5.cards = [{}, {}, {}];
+        boards.board5.cards[0] = { title: "First card", status: "new", elements: [1, 2, 3, 20], modified: new Date().toLocaleString() };
+        boards.board5.cards[1] = { title: "Second card", status: "new", elements: [4, 5, 6], modified: new Date().toLocaleString() };
+        boards.board5.cards[2] = { title: "Third card", status: "new", elements: [7, 8, 9], modified: new Date().toLocaleString() };
         // Store
         // Convert to JSON file and save to storage
         localStorage.boards = JSON.stringify(boards);
@@ -48,12 +66,15 @@ var getBoards = function(data) {
     var j = 1;
     for (var i in allBoards) {
         var projectContent = createProjectContent(allBoards[i]);
-        var ediv = decorateContext("project project-grey draggable draggable='true' data-toggle='modal' data-target='.board-modal'", projectContent);
+        // removed not class parts, attribute setting in jquery - matyi
+        var ediv = decorateContext("project project-grey draggable board", projectContent);
         var div = decorateContext("col-lg-3 col-md-4 col-sm-6 col-xs-12", ediv);
+        // changed naming here - matyi
         var count = "board"+j.toString();
         var adiv = decorateContext(count, div);
         document.getElementById("result").appendChild(adiv);
-        var cards = getCards(allBoards[i].cards);
+        // added count to function call - matyi
+        var cards = getCards(allBoards[i].cards, count);
         document.getElementById("result").appendChild(document.createTextNode(cards));
         j += 1;
   }
@@ -93,9 +114,8 @@ var getRandomColor = function () {
     var rand = myArray[Math.floor(Math.random() * myArray.length)];
     return rand;
 };
-
-var getCards = function(cards, j) {
-
+//added boardnum to function call - matyi
+var getCards = function(cards, boardnum) {
     for (var card in cards){
         var projectContent = document.createElement("div");
         projectContent.className = "project-content";
@@ -109,11 +129,15 @@ var getCards = function(cards, j) {
         var color = ("project project-radius project-"+ getRandomColor() +" draggable");
         var decorated = decorateContext(color, projectContent);
         decorated.setAttribute("draggable", true);
-        decorated = decorateContext("col-lg-3 col-md-4 col-sm-6 col-xs-12", decorated);
-        var count = "card"+j.toString();
+        // this line is not needed because of coloumns
+        // decorated = decorateContext("col-lg-3 col-md-4 col-sm-6 col-xs-12", decorated);
+        // changed naming - matyi
+        var count = "card card-"+boardnum;
         decorated = decorateContext(count, decorated);
-        document.getElementById("result").appendChild(decorated);
-        j += 1;
+        // added set attribute so they dont appear at the start - matyi
+        decorated.setAttribute("style","display: none;");
+        // place in modal, in status coloumn - matyi
+        document.getElementById(cards[card]['status']).appendChild(decorated);
     }
 };
 
