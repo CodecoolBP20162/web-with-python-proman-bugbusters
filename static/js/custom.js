@@ -8,7 +8,7 @@ $(window).load(function () {
 /* Hide Header
  -----------------------------------------------*/
 $(document).ready(function () {
-    $(".btn").click(function () {
+    $(".fa-chevron-up").click(function () {
         $("#header").slideToggle(1000,"swing");
     });
 });

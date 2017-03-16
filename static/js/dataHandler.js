@@ -38,25 +38,56 @@ var retrieveData = function (data) {
     return JSON.parse(localStorage.getItem(data));
 };
 
+
+var generetaEmptyCard = function () {
+    var inputDiv = document.createElement('div');
+    inputDiv = decorateContext("portfolio-thumb new-card portfolio-picture", inputDiv);
+    inputDiv = decorateContext("overlay portfolio-picture board", inputDiv);
+
+    // inputDiv.className = "portfolio-thumb new-card portfolio-picture";
+    // var hover = decorateContext("overlay portfolio-picture board",inputDiv)
+    // hover = decorateContext("portfolio-overlay portfolio-item", hover);
+    // var base = decorateContext(C, hover);
+    var form = document.createElement("form");
+    var title = document.createElement("input");
+    title.setAttribute("id", "title");
+    title.setAttribute("type", "text");
+    title.setAttribute("min", 7);
+    title.setAttribute("max", 20);
+    // form.appendChild(hover);
+    var description = document.createElement("input");
+    description.setAttribute("id", "title");
+    description.setAttribute("type", "text");
+    description.setAttribute("min", 14);
+    description.setAttribute("max", 50);
+    form.appendChild(description);
+    // hover.appendChild(form);
+    // base.appendChild(hover);
+    form = decorateContext("portfolio-overlay portfolio-item", form);
+    inputDiv.appendChild(form);
+    document.getElementById("board-holder").appendChild(inputDiv);
+};
+
 var getBoards = function(data) {
     var allBoards = retrieveData(data);
     var j = 1;
+    generetaEmptyCard();
     for (var i in allBoards) {
         var projectContent = createProjectContent(allBoards[i]);
-        var ediv = decorateContext("project project-grey draggable board", projectContent);
-        var div = decorateContext("col-lg-3 col-md-4 col-sm-6 col-xs-12", ediv);
+        var ediv = decorateContext("portfolio-thumb draggable", projectContent);
+        ediv.setAttribute('draggable', 'true');
+        var div = decorateContext("item iso-box col-lg-3 col-md-4 col-sm-6 col-xs-12", ediv);
         var count = "board"+j.toString();
         var adiv = decorateContext(count, div);
-        document.getElementById("result").appendChild(adiv);
-        var cards = getCards(allBoards[i].cards, count);
-        document.getElementById("result").appendChild(document.createTextNode(cards));
+        document.getElementById("board-holder").appendChild(adiv);
+        getCards(allBoards[i].cards, count);
         j += 1;
   }
 };
 
 var createProjectContent = function (board) {
     var projectContent = document.createElement("div");
-    projectContent.className = "project-content board";
+    projectContent.className = "overlay portfolio-picture board";
     var h3 = document.createElement("h3");
     var text = document.createTextNode(board.title);
     h3.className = "lead";
@@ -64,12 +95,17 @@ var createProjectContent = function (board) {
     var p = document.createElement("p");
     var description = document.createTextNode(board.description);
     p.appendChild(description);
-    var time = decorateContext("time", document.createTextNode(board.timestamp));
-    var cards = decorateContext("cards", document.createTextNode(board.cards.length));
+    var hover = document.createElement("div");
+    hover = decorateContext("portfolio-overlay portfolio-item", hover);
+    var time = document.createElement("h2");
+    time.appendChild(document.createTextNode(board.timestamp));
+    var cards = document.createElement("h2");
+    cards.appendChild(document.createTextNode(board.cards.length));
     projectContent.appendChild(h3);
     projectContent.appendChild(p);
-    projectContent.appendChild(time);
-    projectContent.appendChild(cards);
+    hover.appendChild(cards);
+    hover.appendChild(time);
+    projectContent.appendChild(hover);
     return  projectContent;
 };
 
@@ -80,12 +116,6 @@ var decorateContext = function(name, context) {
     div.className = name;
     div.appendChild(context);
     return div;
-};
-
-var getRandomColor = function () {
-    var myArray = ["grey", "red", "green", "blue", "lightblue", "orange"];
-    var rand = myArray[Math.floor(Math.random() * myArray.length)];
-    return rand;
 };
 
 var getCards = function(cards, boardnum) {
@@ -99,7 +129,7 @@ var getCards = function(cards, boardnum) {
         var p = getCardElements(cards[card].elements);
         projectContent.appendChild(h3);
         projectContent.appendChild(p);
-        var color = ("project project-radius project-"+ getRandomColor() +" draggable");
+        var color = ("project project-radius draggable");
         var decorated = decorateContext(color, projectContent);
         decorated.setAttribute("draggable", true);
         var count = "card card-"+boardnum;
@@ -162,7 +192,9 @@ function  addNewBoard() {
     localStorage.boards = JSON.stringify(boards);
 };
 
-//generateData();
+// generateData();
 var boards = retrieveData("boards");
 getBoards("boards");
+
+console.log(boards)
 //document.getElementById("result").outerHTML = boards.board1.cards[0].modified;
