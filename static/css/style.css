@@ -44,10 +44,11 @@ ul {
     text-align: center;
 }
 
+
 h1 {
   color: #000;
-  font-size: 1.8rem;
-  font-weight: 700;
+  font-size: 1.8rem !important;
+  font-weight: 400 !important;
 }
 
 h2, ul {
@@ -667,5 +668,42 @@ footer {
 
 
 .modal-content {
-    background-color: #888888;
+    background-color: white;
+}
+
+#new {
+    min-height: 500px;
+    max-width: 270px;
+    margin: 7px;
+    background-color: #87D37C;
+    position: relative;
+
+}
+
+#planning {
+    min-height: 500px;
+    max-width: 270px;
+    margin: 7px;
+    background-color: #87D37C;
+    position: relative;
+
+}
+
+#in-progress {
+    min-height: 500px;
+    max-width: 270px;
+    margin: 7px;
+    background-color: #87D37C;
+    position: relative;
+
+}
+
+#done {
+    min-height: 500px;
+    max-width: 270px;
+    margin: 7px;
+    background-color: #87D37C;
+    position: relative;
+
+
 }
