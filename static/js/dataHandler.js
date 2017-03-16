@@ -68,6 +68,7 @@ var generateEmptyBoard = function () {
     inputDiv.appendChild(form);
     inputDiv = decorateContext("overlay portfolio-picture", inputDiv);
     var text = document.createElement('h1');
+    text.className = 'lead';
     var instructions = document.createTextNode('Create new card');
     text.appendChild(instructions);
     inputDiv.appendChild(text);
@@ -151,7 +152,7 @@ var createProjectContent = function (board) {
     time.appendChild(document.createTextNode(board.timestamp));
     var cards = document.createElement("h2");
     cards.appendChild(document.createTextNode(board.cards.length));
-    projectContent.appendChild(h3);
+    projectContent.appendChild(h1);
     projectContent.appendChild(p);
     hover.appendChild(cards);
     hover.appendChild(time);
@@ -173,6 +174,7 @@ var getCards = function(cards, boardnum) {
         var projectContent = document.createElement("div");
         projectContent.className = "project-content";
         var h1 = document.createElement("h2");
+        h1.className = 'text-center';
         var text = document.createTextNode(cards[card].title);
         h1.className = "lead";
         h1.appendChild(text);
@@ -185,7 +187,8 @@ var getCards = function(cards, boardnum) {
         var count = "card card-"+boardnum;
         decorated = decorateContext(count, decorated);
         decorated.setAttribute("style","display: none;");
-        document.getElementById(cards[card]['status']).appendChild(decorated);
+        console.log(cards[card].status)
+        document.getElementById(cards[card].status).appendChild(decorated);
 
     }
 };
@@ -198,18 +201,18 @@ function Board(title, description) {
     this.cards = [];
 };
 
-function Card(title) {
+function Card(title, new_task) {
     this.title = title;
-    this.status = "status-new";
+    this.status = "new";
     this.timestamp = new Date().toLocaleString();
-    this.elements = [];
+    this.elements = new_task;
 };
 
 function  addNewCard(board) {
     var boards = retrieveData("boards");
-    var name = "board-" + (Object.keys(boards).length + 1).toString();
-    var title =  document.getElementById("title");
-    boards[board].cards = new Card(title);
+    var title =  document.getElementById("card-title").value;
+    var new_task = document.getElementById("new_task").value;
+    boards[board].cards.push(new Card(title, new_task));
     localStorage.boards = JSON.stringify(boards);
 };
 
@@ -223,17 +226,14 @@ function  addNewElement(card) {
 
 function  addNewBoard() {
     var boards = retrieveData("boards");
-    var name = "board-" + (Object.keys(boards).length + 1);
+    var name = "board" + (Object.keys(boards).length + 1);
     var title =  document.getElementById("title").value;
     var description =  document.getElementById("description").value;
     boards[name] = new Board(title, description);
     localStorage.boards = JSON.stringify(boards);
 };
 
-// generateData();
+generateData();
 var boards = retrieveData("boards");
 getBoards("boards");
-
-console.log(boards)
-
 //document.getElementById("result").outerHTML = boards.board1.cards[0].modified;

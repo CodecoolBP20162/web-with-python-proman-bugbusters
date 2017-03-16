@@ -107,7 +107,7 @@ img {
     margin: 2px;
 }
 
-.project-content::content {
+.project-content{
     padding: 10px 10px 10px 10px;
 }
 
