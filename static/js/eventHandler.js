@@ -6,6 +6,8 @@ $(document).ready(function () {
         $.each(retrieveData('boards'), function (board, value) {
             $('.' + board).each(function () {
                 $(this).click(function () {
+                    var newCard = generateEmptyCard(board);
+                    $('#new').append(newCard);
                     $('.card').hide();
                     $('.card-' + board).toggle();
                 });
