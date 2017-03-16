@@ -172,12 +172,12 @@ var getCards = function(cards, boardnum) {
     for (var card in cards){
         var projectContent = document.createElement("div");
         projectContent.className = "project-content";
-        var h3 = document.createElement("h3");
+        var h1 = document.createElement("h2");
         var text = document.createTextNode(cards[card].title);
-        h3.className = "lead";
-        h3.appendChild(text);
-        var p = getCardElements(cards[card].elements);
-        projectContent.appendChild(h3);
+        h1.className = "lead";
+        h1.appendChild(text);
+        var p = document.createTextNode(cards[card].elements);
+        projectContent.appendChild(h1);
         projectContent.appendChild(p);
         var color = ("project project-radius draggable");
         var decorated = decorateContext(color, projectContent);
@@ -190,17 +190,6 @@ var getCards = function(cards, boardnum) {
     }
 };
 
-var getCardElements = function (elements) {
-    var ul = document.createElement("ul");
-    for (var i = 0; i < elements.length; i++) {
-        var liTag = document.createElement("li");
-        liTag.appendChild(document.createTextNode(elements[i]));
-        ul.appendChild(liTag);
-    }
-    var p = document.createElement("p");
-    p.appendChild(ul);
-    return p;
-};
 
 function Board(title, description) {
     this.title = title;

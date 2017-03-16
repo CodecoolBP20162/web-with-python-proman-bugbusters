@@ -50,9 +50,9 @@ h1 {
     font-weight: 700;
 }
 
-h2, ul {
-    color: #ffffff;
-    font-size: 1rem;
+h2, ul, {
+  color: #ffffff;
+  font-size: 1rem;
 }
 
 h3 {
@@ -97,6 +97,20 @@ img {
     width: 100%;
     max-width: 100%;
 }
+
+/* cards
+/* ========================================== */
+
+.card {
+    background-color: white;
+    border-radius: 5px;
+    margin: 2px;
+}
+
+.project-content::content {
+    padding: 10px 10px 10px 10px;
+}
+
 
 /* preloader styles
 /* ========================================== */
@@ -805,36 +819,56 @@ footer {
     min-height: 500px;
     max-width: 270px;
     margin: 7px;
-    background-color: #87D37C;
+    background-color: #FDE3A7;
     position: relative;
+    transition: all .2s ease-in-out;
 
+}
+
+#new:hover {
+    transform: scale(1.1);
 }
 
 #planning {
     min-height: 500px;
     max-width: 270px;
     margin: 7px;
-    background-color: #87D37C;
+    background-color: #F4B350;
     position: relative;
+    transition: all .2s ease-in-out;
 
+}
+
+#planning:hover {
+    transform: scale(1.1);
 }
 
 #in-progress {
     min-height: 500px;
     max-width: 270px;
     margin: 7px;
-    background-color: #87D37C;
+    background-color: #C8F7C5;
     position: relative;
+    transition: all .2s ease-in-out;
+}
 
+#in-progress:hover {
+    transform: scale(1.1);
 }
 
 #done {
     min-height: 500px;
     max-width: 270px;
     margin: 7px;
-    background-color: #87D37C;
+    background-color: #3FC380;
     position: relative;
-
-
+    transition: all .2s ease-in-out;
 }
+
+#done:hover {
+    transform: scale(1.1);
+}
+
+
+
 
