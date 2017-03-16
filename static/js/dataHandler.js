@@ -41,30 +41,35 @@ var retrieveData = function (data) {
 
 var generetaEmptyCard = function () {
     var inputDiv = document.createElement('div');
-    inputDiv = decorateContext("portfolio-thumb new-card portfolio-picture", inputDiv);
-    inputDiv = decorateContext("overlay portfolio-picture board", inputDiv);
-
-    // inputDiv.className = "portfolio-thumb new-card portfolio-picture";
-    // var hover = decorateContext("overlay portfolio-picture board",inputDiv)
-    // hover = decorateContext("portfolio-overlay portfolio-item", hover);
-    // var base = decorateContext(C, hover);
+    inputDiv = decorateContext("portfolio-overlay portfolio-item", inputDiv);
     var form = document.createElement("form");
     var title = document.createElement("input");
     title.setAttribute("id", "title");
     title.setAttribute("type", "text");
     title.setAttribute("min", 7);
     title.setAttribute("max", 20);
-    // form.appendChild(hover);
+    title.setAttribute('required', 'true');
     var description = document.createElement("input");
-    description.setAttribute("id", "title");
+    description.setAttribute("id", "description");
     description.setAttribute("type", "text");
     description.setAttribute("min", 14);
     description.setAttribute("max", 50);
+    description.setAttribute('required', 'true');
+    var form_button = document.createElement('button');
+    form_button.setAttribute("onclick", "addNewBoard();");
+    form_button.appendChild(document.createTextNode('Submit'));
+    form.appendChild(title);
+    form.appendChild(document.createElement('br'));
+    form.appendChild(document.createElement('br'));
     form.appendChild(description);
-    // hover.appendChild(form);
-    // base.appendChild(hover);
+    form.appendChild(document.createElement('br'));
+    form.appendChild(document.createElement('br'));
+    form.appendChild(form_button);
     form = decorateContext("portfolio-overlay portfolio-item", form);
     inputDiv.appendChild(form);
+    inputDiv = decorateContext("overlay portfolio-picture", inputDiv);
+    inputDiv = decorateContext("portfolio-thumb new-card portfolio-picture", inputDiv);
+    inputDiv = decorateContext("item iso-box col-lg-3 col-md-4 col-sm-6 col-xs-12", inputDiv);
     document.getElementById("board-holder").appendChild(inputDiv);
 };
 
