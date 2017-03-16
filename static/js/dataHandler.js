@@ -4,23 +4,22 @@ var generateData = function () {
         boards.board1 = { title: "Board #1", description: "First board", timestamp: new Date().toLocaleString(), cards: [] };
         boards.board1.cards = [{}, {}, {}];
         boards.board1.cards[0] = { title: "First card", status: "new", elements: [1, 2, 3, 10], modified: new Date().toLocaleString() };
-        boards.board1.cards[1] = { title: "Second card", status: "new", elements: [4, 5, 6], modified: new Date().toLocaleString() };
-        boards.board1.cards[2] = { title: "Third card", status: "new", elements: [7, 8, 9], modified: new Date().toLocaleString() };
+        boards.board1.cards[1] = { title: "Second card", status: "planning", elements: [4, 5, 6], modified: new Date().toLocaleString() };
+        boards.board1.cards[2] = { title: "Third card", status: "done", elements: [7, 8, 9], modified: new Date().toLocaleString() };
 
         boards.board2 = { title: "Board #2", description: "Second board", timestamp: new Date().toLocaleString(), cards: [] };
         boards.board2.cards = [{}, {}, {}];
         boards.board2.cards[0] = { title: "First card", status: "new", elements: [1, 2, 3, 20], modified: new Date().toLocaleString() };
-        boards.board2.cards[1] = { title: "Second card", status: "new", elements: [4, 5, 6], modified: new Date().toLocaleString() };
+        boards.board2.cards[1] = { title: "Second card", status: "in-progress", elements: [4, 5, 6], modified: new Date().toLocaleString() };
         boards.board2.cards[2] = { title: "Third card", status: "new", elements: [7, 8, 9], modified: new Date().toLocaleString() };
 
         boards.board3 = { title: "Board #3", description: "Second board", timestamp: new Date().toLocaleString(), cards: [] };
         boards.board3.cards = [{}, {}, {}];
         boards.board3.cards[0] = { title: "First card", status: "new", elements: [1, 2, 3, 20], modified: new Date().toLocaleString() };
         boards.board3.cards[1] = { title: "Second card", status: "new", elements: [4, 5, 6], modified: new Date().toLocaleString() };
-        boards.board3.cards[2] = { title: "Third card", status: "new", elements: [7, 8, 9], modified: new Date().toLocaleString() };
+        boards.board3.cards[2] = { title: "Third card", status: "planning", elements: [7, 8, 9], modified: new Date().toLocaleString() };
         boards.board3.cards[3] = { title: "#4 card", status: "new", elements: [7, 8, 9], modified: new Date().toLocaleString() };
         boards.board3.cards[4] = { title: "#5 card", status: "new", elements: [7, 8, 9], modified: new Date().toLocaleString() };
-
         // Store
         // Convert to JSON file and save to storage
         localStorage.boards = JSON.stringify(boards);
@@ -38,24 +37,88 @@ var retrieveData = function (data) {
     return JSON.parse(localStorage.getItem(data));
 };
 
+var generateEmptyBoard = function () {
+    var inputDiv = document.createElement('div');
+    inputDiv = decorateContext("portfolio-overlay portfolio-item", inputDiv);
+    var form = document.createElement("form");
+    var title = generateInput("title", 6, 20);
+    var description = generateInput("description", 6, 50);
+    var form_button = document.createElement('input');
+    form_button.setAttribute("type", "submit");
+    form_button.setAttribute("onclick", "addNewBoard();");
+    form_button.appendChild(document.createTextNode('Submit'));
+    form.appendChild(title);
+    form.appendChild(document.createElement('br'));
+    form.appendChild(document.createElement('br'));
+    form.appendChild(description);
+    form.appendChild(document.createElement('br'));
+    form.appendChild(document.createElement('br'));
+    form.appendChild(form_button);
+    form = decorateContext("portfolio-overlay portfolio-item", form);
+    inputDiv.appendChild(form);
+    inputDiv = decorateContext("overlay portfolio-picture", inputDiv);
+    inputDiv = decorateContext("portfolio-thumb new-card portfolio-picture", inputDiv);
+    inputDiv = decorateContext("item iso-box col-lg-3 col-md-4 col-sm-6 col-xs-12", inputDiv);
+    document.getElementById("board-holder").appendChild(inputDiv);
+};
+
+var generateInput = function (name, min, max) {
+    var input = document.createElement("input");
+    input.setAttribute("id", name);
+    input.setAttribute("type", "text");
+    input.setAttribute("min", min);
+    input.setAttribute("max", max);
+    input.setAttribute('required', 'true');
+    input.setAttribute("placeholder", name.toUpperCase());
+    return input;
+};
+
+var getNewCardElement = function (num) {
+    var id = "card-element-"+num.toString();
+    var cardelement = generateInput(id, 6, 20);
+    return cardelement
+};
+
+
+var generateEmptyCard = function (count) {
+    var div = document.createElement('div');
+    var div = decorateContext("project-content", div);
+    var title = generateInput("card-title", 6, 20);
+    var new_element = generateInput("element");
+    var title_h2 = document.createTextNode("Card title");
+    var new_task = document.createTextNode("New task");
+    div.appendChild(title_h2);
+    div.appendChild(title);
+    div.appendChild(new_task);
+    div.appendChild(new_element);
+    div = decorateContext("project project-radius draggable", div);
+    div = decorateContext("card card-" + count, div);
+    return div;
+};
+
+
 var getBoards = function(data) {
     var allBoards = retrieveData(data);
     var j = 1;
+    generateEmptyBoard();
     for (var i in allBoards) {
         var projectContent = createProjectContent(allBoards[i]);
-        var ediv = decorateContext("project project-grey draggable", projectContent);
-        var div = decorateContext("col-lg-3 col-md-4 col-sm-6 col-xs-12", ediv);
+        var ediv = decorateContext("portfolio-thumb draggable", projectContent);
+        ediv.setAttribute('draggable', 'true');
+        var div = decorateContext("item iso-box col-lg-3 col-md-4 col-sm-6 col-xs-12", ediv);
         var count = "board"+j.toString();
         var adiv = decorateContext(count, div);
-        document.getElementById("result").appendChild(adiv);
+        document.getElementById("board-holder").appendChild(adiv);
         getCards(allBoards[i].cards, count);
+        var addCard = generateEmptyCard(count);
+        document.getElementById("new").appendChild(addCard);
         j += 1;
   }
 };
 
 var createProjectContent = function (board) {
     var projectContent = document.createElement("div");
-    projectContent.className = "project-content board";
+    projectContent.className = "overlay portfolio-picture board";
     var h3 = document.createElement("h3");
     var text = document.createTextNode(board.title);
     h3.className = "lead";
@@ -63,12 +126,17 @@ var createProjectContent = function (board) {
     var p = document.createElement("p");
     var description = document.createTextNode(board.description);
     p.appendChild(description);
-    var time = decorateContext("time", document.createTextNode(board.timestamp));
-    var cards = decorateContext("cards", document.createTextNode(board.cards.length));
+    var hover = document.createElement("div");
+    hover = decorateContext("portfolio-overlay portfolio-item", hover);
+    var time = document.createElement("h2");
+    time.appendChild(document.createTextNode(board.timestamp));
+    var cards = document.createElement("h2");
+    cards.appendChild(document.createTextNode(board.cards.length));
     projectContent.appendChild(h3);
     projectContent.appendChild(p);
-    projectContent.appendChild(time);
-    projectContent.appendChild(cards);
+    hover.appendChild(cards);
+    hover.appendChild(time);
+    projectContent.appendChild(hover);
     return  projectContent;
 };
 
@@ -79,12 +147,6 @@ var decorateContext = function(name, context) {
     div.className = name;
     div.appendChild(context);
     return div;
-};
-
-var getRandomColor = function () {
-    var myArray = ["grey", "red", "green", "blue", "lightblue", "orange"];
-    var rand = myArray[Math.floor(Math.random() * myArray.length)];
-    return rand;
 };
 
 var getCards = function(cards, boardnum) {
@@ -98,13 +160,12 @@ var getCards = function(cards, boardnum) {
         var p = getCardElements(cards[card].elements);
         projectContent.appendChild(h3);
         projectContent.appendChild(p);
-        var color = ("project project-radius project-"+ getRandomColor() +" draggable");
+        var color = ("project project-radius draggable");
         var decorated = decorateContext(color, projectContent);
         decorated.setAttribute("draggable", true);
         var count = "card card-"+boardnum;
         decorated = decorateContext(count, decorated);
         decorated.setAttribute("style","display: none;");
-        console.log(cards[card].status);
         document.getElementById(cards[card]['status']).appendChild(decorated);
 
     }
@@ -112,10 +173,11 @@ var getCards = function(cards, boardnum) {
 
 var getCardElements = function (elements) {
     var ul = document.createElement("ul");
+    console.log(elements);
     for (var i = 0; i < elements.length; i++) {
-        var liTag = document.createElement("li");
-        liTag.appendChild(document.createTextNode(elements[i]));
-        ul.appendChild(liTag);
+            var liTag = document.createElement("li");
+            liTag.appendChild(document.createTextNode(elements[i]));
+            ul.appendChild(liTag);
     }
     var p = document.createElement("p");
     p.appendChild(ul);
@@ -154,15 +216,16 @@ function  addNewElement(card) {
 
 function  addNewBoard() {
     var boards = retrieveData("boards");
-    var name = "board-" + (Object.keys(boards).length + 1).toString();
-    var title =  document.getElementById("title");
-    var description =  document.getElementById("description");
-    console.log(title, description);
+    var name = "board-" + (Object.keys(boards).length + 1);
+    var title =  document.getElementById("title").value;
+    var description =  document.getElementById("description").value;
     boards[name] = new Board(title, description);
+    boards[name].cards = [];
     localStorage.boards = JSON.stringify(boards);
 };
 
-generateData();
+
+// generateData();
 var boards = retrieveData("boards");
 getBoards("boards");
 //document.getElementById("result").outerHTML = boards.board1.cards[0].modified;

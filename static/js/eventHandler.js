@@ -3,7 +3,7 @@
  */
 $(document).ready(function () {
     $(".board").attr("data-toggle", "modal").attr("data-target", ".board-modal").attr("draggable", "true").attr('style', 'cursor:pointer;').click(function () {
-        $.each(boards, function (board, value) {
+        $.each(retrieveData('boards'), function (board, value) {
             $('.' + board).each(function () {
                 $(this).click(function () {
                     $('.card').hide();
@@ -12,4 +12,7 @@ $(document).ready(function () {
             })
         });
     });
+    $('#vision').click(function () {
+        $('.card').hide()
+    })
 });
