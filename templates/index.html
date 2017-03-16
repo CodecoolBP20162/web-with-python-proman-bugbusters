@@ -5,6 +5,12 @@
 
 <body>
     <div id="result"></div>
+    <div id="demo"></div>
+    <form>
+        Title: <input type="text" id="title" min="8" max="24"/><br>
+        Description: <input type="text" id="description" min="8" max="24"/><br>
+        <input type="button" value="Add new Board" onclick="addNewBoard();">
+    </form>
     <script src="{{ url_for('static', filename='js/dataHandler.js') }}"></script>
 </body>
 
