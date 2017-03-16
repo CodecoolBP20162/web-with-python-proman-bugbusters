@@ -6,8 +6,7 @@ $(document).ready(function () {
         $.each(retrieveData('boards'), function (board, value) {
             $('.' + board).each(function () {
                 $(this).click(function () {
-                    var newCard = generateEmptyCard(board);
-                    $('#new').append(newCard);
+                    $('#submit-card').attr('onclick', 'addNewCard("'+board+'");');
                     $('.card').hide();
                     $('.card-' + board).toggle();
                 });
@@ -15,6 +14,10 @@ $(document).ready(function () {
         });
     });
     $('#vision').click(function () {
-        $('.card').hide()
+        $('.card').hide();
+        $('#submit-card').removeAttr('onclick');
+    });
+    $('#submit-card').click(function () {
+        $(this).removeAttr()
     })
 });
