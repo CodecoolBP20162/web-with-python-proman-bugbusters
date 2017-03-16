@@ -162,7 +162,7 @@ var getCards = function(cards, boardnum) {
     for (var card in cards){
         var projectContent = document.createElement("div");
         projectContent.className = "project-content";
-        var h1 = document.createElement("h1");
+        var h1 = document.createElement("h2");
         var text = document.createTextNode(cards[card].title);
         h1.className = "lead";
         h1.appendChild(text);
