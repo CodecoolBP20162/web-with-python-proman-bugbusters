@@ -57,7 +57,7 @@ var generateEmptyBoard = function () {
     form = decorateContext("portfolio-overlay portfolio-item", form);
     inputDiv.appendChild(form);
     inputDiv = decorateContext("overlay portfolio-picture", inputDiv);
-    var text = document.createElement('h3');
+    var text = document.createElement('h1');
     var instructions = document.createTextNode('Create new card');
     text.appendChild(instructions);
     inputDiv.appendChild(text);
@@ -128,10 +128,10 @@ var getBoards = function(data) {
 var createProjectContent = function (board) {
     var projectContent = document.createElement("div");
     projectContent.className = "overlay portfolio-picture board";
-    var h3 = document.createElement("h3");
+    var h1 = document.createElement("h1");
     var text = document.createTextNode(board.title);
-    h3.className = "lead";
-    h3.appendChild(text);
+    h1.className = "lead";
+    h1.appendChild(text);
     var p = document.createElement("p");
     var description = document.createTextNode(board.description);
     p.appendChild(description);
@@ -141,7 +141,7 @@ var createProjectContent = function (board) {
     time.appendChild(document.createTextNode(board.timestamp));
     var cards = document.createElement("h2");
     cards.appendChild(document.createTextNode(board.cards.length));
-    projectContent.appendChild(h3);
+    projectContent.appendChild(h1);
     projectContent.appendChild(p);
     hover.appendChild(cards);
     hover.appendChild(time);
@@ -162,7 +162,7 @@ var getCards = function(cards, boardnum) {
     for (var card in cards){
         var projectContent = document.createElement("div");
         projectContent.className = "project-content";
-        var h3 = document.createElement("h3");
+        var h1 = document.createElement("h1");
         var text = document.createTextNode(cards[card].title);
         h3.className = "lead";
         h3.appendChild(text);
