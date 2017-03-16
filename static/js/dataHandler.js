@@ -39,7 +39,7 @@ var retrieveData = function (data) {
 };
 
 
-var generetaEmptyCard = function () {
+var generetaEmptyBoard = function () {
     var inputDiv = document.createElement('div');
     inputDiv = decorateContext("portfolio-overlay portfolio-item", inputDiv);
     var form = document.createElement("form");
@@ -73,10 +73,11 @@ var generetaEmptyCard = function () {
     document.getElementById("board-holder").appendChild(inputDiv);
 };
 
+
 var getBoards = function(data) {
     var allBoards = retrieveData(data);
     var j = 1;
-    generetaEmptyCard();
+    generetaEmptyBoard();
     for (var i in allBoards) {
         var projectContent = createProjectContent(allBoards[i]);
         var ediv = decorateContext("portfolio-thumb draggable", projectContent);
@@ -189,10 +190,9 @@ function  addNewElement(card) {
 
 function  addNewBoard() {
     var boards = retrieveData("boards");
-    var name = "board-" + (Object.keys(boards).length + 1).toString();
-    var title =  document.getElementById("title");
-    var description =  document.getElementById("description");
-    console.log(title, description);
+    var name = "board-" + (Object.keys(boards).length + 1);
+    var title =  document.getElementById("title").value;
+    var description =  document.getElementById("description").value;
     boards[name] = new Board(title, description);
     localStorage.boards = JSON.stringify(boards);
 };
