@@ -165,17 +165,24 @@
         <div class="modal-content">
             <div class="container">
             <div id="board-modal"></div>
+                <button class="btn btn-default btn-lg" style="margin: 1em" data-toggle="modal" data-target=".board-modal">Back to home</button>
+                <div class="clearfix"></div>
 
                 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" id="new">
                     <h1 class="text-center">New</h1>
                     <div class="project project radius">
                         <div class="project-content">
+
+                            <div align="center" style="border-radius: 3px; background-color: rgba(255,255,255,0.5); padding: 1em">
                             <form>
                                 <input type="text" id="card-title" min="6" max="20" required placeholder="Title">
-                                <br>
+                                <br><br>
                                 <input type="text" id="new_task" min="6" max="40" required placeholder="New task">
+                                <br><br>
                                 <button type="submit" id="submit-card">Submit</button>
                             </form>
+                        </div>
+
                         </div>
                     </div>
                 </div>
@@ -191,13 +198,12 @@
 
                 </div>
 
-                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12"  id="done">
+                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" style="margin-bottom: 2em"  id="done">
                     <h1 class="text-center">Done</h1>
 
                 </div>
 
-            <div class="clearfix"></div>
-                <button id="vision" class="btn btn-default btn-lg" style="margin-bottom: 1em" data-toggle="modal" data-target=".board-modal">Back</button>
+
             </div>
         </div>
     </div>
