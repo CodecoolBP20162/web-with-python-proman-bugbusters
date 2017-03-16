@@ -40,9 +40,6 @@ var retrieveData = function (data) {
     return JSON.parse(localStorage.getItem(data));
 };
 
-<<<<<<< Updated upstream
-=======
-
 var generateEmptyBoard = function () {
     var inputDiv = document.createElement('div');
     inputDiv = decorateContext("portfolio-overlay portfolio-item", inputDiv);
@@ -102,7 +99,6 @@ var generateEmptyCard = function (count) {
     return div;
 };
 
->>>>>>> Stashed changes
 var getBoards = function(data) {
     var allBoards = retrieveData(data);
     var j = 1;
