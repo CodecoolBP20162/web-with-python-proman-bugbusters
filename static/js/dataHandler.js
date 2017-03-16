@@ -1,30 +1,30 @@
-var generateData = function () {
-        // Create dictionary
-        var boards = {};
-        boards.board1 = { title: "Board #1", description: "First board", timestamp: new Date().toLocaleString(), cards: [] };
-        boards.board1.cards = [{}, {}, {}];
-        boards.board1.cards[0] = { title: "First card", status: "new", elements: [1, 2, 3, 10], modified: new Date().toLocaleString() };
-        boards.board1.cards[1] = { title: "Second card", status: "new", elements: [4, 5, 6], modified: new Date().toLocaleString() };
-        boards.board1.cards[2] = { title: "Third card", status: "new", elements: [7, 8, 9], modified: new Date().toLocaleString() };
-
-        boards.board2 = { title: "Board #2", description: "Second board", timestamp: new Date().toLocaleString(), cards: [] };
-        boards.board2.cards = [{}, {}, {}];
-        boards.board2.cards[0] = { title: "First card", status: "new", elements: [1, 2, 3, 20], modified: new Date().toLocaleString() };
-        boards.board2.cards[1] = { title: "Second card", status: "ew", elements: [4, 5, 6], modified: new Date().toLocaleString() };
-        boards.board2.cards[2] = { title: "Third card", status: "new", elements: [7, 8, 9], modified: new Date().toLocaleString() };
-
-        boards.board3 = { title: "Board #3", description: "Second board", timestamp: new Date().toLocaleString(), cards: [] };
-        boards.board3.cards = [{}, {}, {}];
-        boards.board3.cards[0] = { title: "First card", status: "new", elements: [1, 2, 3, 20], modified: new Date().toLocaleString() };
-        boards.board3.cards[1] = { title: "Second card", status: "new", elements: [4, 5, 6], modified: new Date().toLocaleString() };
-        boards.board3.cards[2] = { title: "Third card", status: "new", elements: [7, 8, 9], modified: new Date().toLocaleString() };
-        boards.board3.cards[3] = { title: "#4 card", status: "new", elements: [7, 8, 9], modified: new Date().toLocaleString() };
-        boards.board3.cards[4] = { title: "#5 card", status: "new", elements: [7, 8, 9], modified: new Date().toLocaleString() };
-
-        // Store
-        // Convert to JSON file and save to storage
-        localStorage.boards = JSON.stringify(boards);
-};
+// var generateData = function () {
+//         // Create dictionary
+//         var boards = {};
+//         boards.board1 = { title: "Board #1", description: "First board", timestamp: new Date().toLocaleString(), cards: [] };
+//         boards.board1.cards = [{}, {}, {}];
+//         boards.board1.cards[0] = { title: "First card", status: "new", elements: [1, 2, 3, 10], modified: new Date().toLocaleString() };
+//         boards.board1.cards[1] = { title: "Second card", status: "new", elements: [4, 5, 6], modified: new Date().toLocaleString() };
+//         boards.board1.cards[2] = { title: "Third card", status: "new", elements: [7, 8, 9], modified: new Date().toLocaleString() };
+//
+//         boards.board2 = { title: "Board #2", description: "Second board", timestamp: new Date().toLocaleString(), cards: [] };
+//         boards.board2.cards = [{}, {}, {}];
+//         boards.board2.cards[0] = { title: "First card", status: "new", elements: [1, 2, 3, 20], modified: new Date().toLocaleString() };
+//         boards.board2.cards[1] = { title: "Second card", status: "ew", elements: [4, 5, 6], modified: new Date().toLocaleString() };
+//         boards.board2.cards[2] = { title: "Third card", status: "new", elements: [7, 8, 9], modified: new Date().toLocaleString() };
+//
+//         boards.board3 = { title: "Board #3", description: "Second board", timestamp: new Date().toLocaleString(), cards: [] };
+//         boards.board3.cards = [{}, {}, {}];
+//         boards.board3.cards[0] = { title: "First card", status: "new", elements: [1, 2, 3, 20], modified: new Date().toLocaleString() };
+//         boards.board3.cards[1] = { title: "Second card", status: "new", elements: [4, 5, 6], modified: new Date().toLocaleString() };
+//         boards.board3.cards[2] = { title: "Third card", status: "new", elements: [7, 8, 9], modified: new Date().toLocaleString() };
+//         boards.board3.cards[3] = { title: "#4 card", status: "new", elements: [7, 8, 9], modified: new Date().toLocaleString() };
+//         boards.board3.cards[4] = { title: "#5 card", status: "new", elements: [7, 8, 9], modified: new Date().toLocaleString() };
+//
+//         // Store
+//         // Convert to JSON file and save to storage
+//         localStorage.boards = JSON.stringify(boards);
+// };
 
 var checkStorage = function () {
     if (typeof (Storage) !== "undefined") {
@@ -129,7 +129,6 @@ function Board(title, description) {
     this.cards = [];
 };
 
-
 function Card(title) {
     this.title = title;
     this.status = "status-new";
@@ -137,6 +136,21 @@ function Card(title) {
     this.elements = [];
 };
 
+function  addNewCard(board) {
+    var boards = retrieveData("boards");
+    var name = "board-" + (Object.keys(boards).length + 1).toString();
+    var title =  document.getElementById("title");
+    boards[board].cards = new Card(title);
+    localStorage.boards = JSON.stringify(boards);
+};
+
+function  addNewElement(card) {
+    var boards = retrieveData("boards");
+    var name = "board-" + (Object.keys(boards).length + 1).toString();
+    var title =  document.getElementById("new_element");
+    boards[board].cards.elements.push(new Card(title));
+    localStorage.boards = JSON.stringify(boards);
+};
 
 function  addNewBoard() {
     var boards = retrieveData("boards");
