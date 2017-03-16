@@ -37,14 +37,24 @@ var retrieveData = function (data) {
     return JSON.parse(localStorage.getItem(data));
 };
 
+
 var generateEmptyBoard = function () {
     var inputDiv = document.createElement('div');
     inputDiv = decorateContext("portfolio-overlay portfolio-item", inputDiv);
     var form = document.createElement("form");
-    var title = generateInput("title", 6, 20);
-    var description = generateInput("description", 6, 50);
-    var form_button = document.createElement('input');
-    form_button.setAttribute("type", "submit");
+    var title = document.createElement("input");
+    title.setAttribute("id", "title");
+    title.setAttribute("type", "text");
+    title.setAttribute("min", 7);
+    title.setAttribute("max", 20);
+    title.setAttribute('required', 'true');
+    var description = document.createElement("input");
+    description.setAttribute("id", "description");
+    description.setAttribute("type", "text");
+    description.setAttribute("min", 14);
+    description.setAttribute("max", 50);
+    description.setAttribute('required', 'true');
+    var form_button = document.createElement('button');
     form_button.setAttribute("onclick", "addNewBoard();");
     form_button.appendChild(document.createTextNode('Submit'));
     form.appendChild(title);
@@ -141,7 +151,7 @@ var createProjectContent = function (board) {
     time.appendChild(document.createTextNode(board.timestamp));
     var cards = document.createElement("h2");
     cards.appendChild(document.createTextNode(board.cards.length));
-    projectContent.appendChild(h1);
+    projectContent.appendChild(h3);
     projectContent.appendChild(p);
     hover.appendChild(cards);
     hover.appendChild(time);
@@ -162,11 +172,11 @@ var getCards = function(cards, boardnum) {
     for (var card in cards){
         var projectContent = document.createElement("div");
         projectContent.className = "project-content";
-        var h1 = document.createElement("h1");
+        var h3 = document.createElement("h3");
         var text = document.createTextNode(cards[card].title);
         h3.className = "lead";
         h3.appendChild(text);
-        var p = document.createTextNode(cards[card].elements);
+        var p = getCardElements(cards[card].elements);
         projectContent.appendChild(h3);
         projectContent.appendChild(p);
         var color = ("project project-radius draggable");
@@ -180,17 +190,17 @@ var getCards = function(cards, boardnum) {
     }
 };
 
-// var getCardElements = function (elements) {
-    // var ul = document.createElement("ul");
-    // for (var i = 0; i < elements.length; i++) {
-    //         var liTag = document.createElement("li");
-    //         liTag.appendChild(document.createTextNode(elements[i]));
-    //         ul.appendChild(liTag);
-    // }
-    // var p = document.createElement("p");
-    // p.appendChild(ul);
-    // return p;
-// };
+var getCardElements = function (elements) {
+    var ul = document.createElement("ul");
+    for (var i = 0; i < elements.length; i++) {
+        var liTag = document.createElement("li");
+        liTag.appendChild(document.createTextNode(elements[i]));
+        ul.appendChild(liTag);
+    }
+    var p = document.createElement("p");
+    p.appendChild(ul);
+    return p;
+};
 
 function Board(title, description) {
     this.title = title;
@@ -199,34 +209,42 @@ function Board(title, description) {
     this.cards = [];
 };
 
-function Card(title, new_task) {
+function Card(title) {
     this.title = title;
-    this.status = "new";
+    this.status = "status-new";
     this.timestamp = new Date().toLocaleString();
-    this.elements = new_task;
+    this.elements = [];
 };
 
 function  addNewCard(board) {
     var boards = retrieveData("boards");
-    var title =  document.getElementById("card-title").value;
-    var new_task =  document.getElementById("new_task").value;
-    boards[board].cards.push(new Card(title, new_task));
+    var name = "board-" + (Object.keys(boards).length + 1).toString();
+    var title =  document.getElementById("title");
+    boards[board].cards = new Card(title);
     localStorage.boards = JSON.stringify(boards);
 };
 
+function  addNewElement(card) {
+    var boards = retrieveData("boards");
+    var name = "board-" + (Object.keys(boards).length + 1).toString();
+    var title =  document.getElementById("new_element");
+    boards[board].cards.elements.push(new Card(title));
+    localStorage.boards = JSON.stringify(boards);
+};
 
 function  addNewBoard() {
     var boards = retrieveData("boards");
-    var name = "board" + (Object.keys(boards).length + 1);
+    var name = "board-" + (Object.keys(boards).length + 1);
     var title =  document.getElementById("title").value;
     var description =  document.getElementById("description").value;
     boards[name] = new Board(title, description);
-    boards[name].cards = [];
     localStorage.boards = JSON.stringify(boards);
 };
-
 
 // generateData();
 var boards = retrieveData("boards");
 getBoards("boards");
+
+console.log(boards)
+
 //document.getElementById("result").outerHTML = boards.board1.cards[0].modified;
