@@ -20,9 +20,6 @@ var generateData = function () {
         boards.board3.cards[2] = { title: "Third card", status: "planning", elements: [7, 8, 9], modified: new Date().toLocaleString() };
         boards.board3.cards[3] = { title: "#4 card", status: "new", elements: [7, 8, 9], modified: new Date().toLocaleString() };
         boards.board3.cards[4] = { title: "#5 card", status: "new", elements: [7, 8, 9], modified: new Date().toLocaleString() };
-
-        boards.board4 = { title: "Board #4", description: "4+ E f ss", timestamp: new Date().toLocaleString(), cards: [] };
-        boards.board4.cards = [{}, {}, {}];
         // Store
         // Convert to JSON file and save to storage
         localStorage.boards = JSON.stringify(boards);
@@ -234,7 +231,6 @@ function  addNewBoard() {
     localStorage.boards = JSON.stringify(boards);
 };
 
-// generateData();
 var boards = retrieveData("boards");
 getBoards("boards");
 //document.getElementById("result").outerHTML = boards.board1.cards[0].modified;
