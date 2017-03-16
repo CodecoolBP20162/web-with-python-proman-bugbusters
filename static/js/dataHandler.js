@@ -94,15 +94,8 @@ var generateEmptyCard = function (count) {
     div = decorateContext("project project-radius draggable", div);
     div = decorateContext("card card-" + count, div);
     return div;
-}
-
-var generateEmptyCard = function () {
-    var inputDiv = document.createElement('div');
-    inputDiv = decorateContext('project-content', inputDiv);
-    var form = document.createElement('form');
-    var title = document.
-    inputDiv = decorateContext('')
 };
+
 
 var getBoards = function(data) {
     var allBoards = retrieveData(data);
