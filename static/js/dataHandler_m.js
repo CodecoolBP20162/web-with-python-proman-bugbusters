@@ -66,14 +66,11 @@ var getBoards = function(data) {
     var j = 1;
     for (var i in allBoards) {
         var projectContent = createProjectContent(allBoards[i]);
-        // removed not class parts, attribute setting in jquery - matyi
         var ediv = decorateContext("project project-grey draggable board", projectContent);
         var div = decorateContext("col-lg-3 col-md-4 col-sm-6 col-xs-12", ediv);
-        // changed naming here - matyi
         var count = "board"+j.toString();
         var adiv = decorateContext(count, div);
         document.getElementById("result").appendChild(adiv);
-        // added count to function call - matyi
         var cards = getCards(allBoards[i].cards, count);
         document.getElementById("result").appendChild(document.createTextNode(cards));
         j += 1;
@@ -129,14 +126,9 @@ var getCards = function(cards, boardnum) {
         var color = ("project project-radius project-"+ getRandomColor() +" draggable");
         var decorated = decorateContext(color, projectContent);
         decorated.setAttribute("draggable", true);
-        // this line is not needed because of coloumns
-        // decorated = decorateContext("col-lg-3 col-md-4 col-sm-6 col-xs-12", decorated);
-        // changed naming - matyi
         var count = "card card-"+boardnum;
         decorated = decorateContext(count, decorated);
-        // added set attribute so they dont appear at the start - matyi
         decorated.setAttribute("style","display: none;");
-        // place in modal, in status coloumn - matyi
         document.getElementById(cards[card]['status']).appendChild(decorated);
     }
 };

@@ -43,12 +43,13 @@ var getBoards = function(data) {
     var j = 1;
     for (var i in allBoards) {
         var projectContent = createProjectContent(allBoards[i]);
-        var ediv = decorateContext("project project-grey draggable", projectContent);
+        var ediv = decorateContext("project project-grey draggable board", projectContent);
         var div = decorateContext("col-lg-3 col-md-4 col-sm-6 col-xs-12", ediv);
         var count = "board"+j.toString();
         var adiv = decorateContext(count, div);
         document.getElementById("result").appendChild(adiv);
-        getCards(allBoards[i].cards, count);
+        var cards = getCards(allBoards[i].cards, count);
+        document.getElementById("result").appendChild(document.createTextNode(cards));
         j += 1;
   }
 };
@@ -88,7 +89,6 @@ var getRandomColor = function () {
 };
 
 var getCards = function(cards, boardnum) {
-    var j = 0;
     for (var card in cards){
         var projectContent = document.createElement("div");
         projectContent.className = "project-content";
@@ -104,9 +104,8 @@ var getCards = function(cards, boardnum) {
         decorated.setAttribute("draggable", true);
         var count = "card card-"+boardnum;
         decorated = decorateContext(count, decorated);
-        decorated.setAttribute("stlye", "display: none");
-        document.getElementById(cards[cards]['status']).appendChild(decorated);
-        j += 1;
+        decorated.setAttribute("style","display: none;");
+        document.getElementById(cards[card]['status']).appendChild(decorated);
     }
 };
 
