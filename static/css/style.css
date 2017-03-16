@@ -6,7 +6,7 @@ http://www.tooplate.com/view/2082-pure-mix
 
 */
 
-/* Body 
+/* Body
 ------------------------------------- */
 body {
 		background: #ffffff;
@@ -35,13 +35,22 @@ h1,h2,h3,h4 {
   text-transform: uppercase;
 }
 
+ul {
+    list-style: none;
+}
+
+.portfolio-item{
+    display: inline-block;
+    text-align: center;
+}
+
 h1 {
   color: #000;
   font-size: 1.8rem;
   font-weight: 700;
 }
 
-h2 {
+h2, ul {
   color: #ffffff;
   font-size: 1rem;
 }
@@ -134,6 +143,10 @@ img {
 
 /* navigation styles
 /* ========================================== */
+.nav-container{
+    background-color: #F5F5F5;
+}
+
 .nav-container,
 nav {
   overflow: visible;
@@ -431,18 +444,7 @@ a.icon {
   min-height: 100%;
   padding-top: 100px !important;
 }
-.header-two {
-  background: url('../images/header-bg.jpg') no-repeat;
-}
-.header-three {
-  background: url('../images/header-three-bg.jpg') no-repeat;
-}
-.header-four {
-  background: url('../images/header-four-bg.jpg') no-repeat;
-}
-.header-five {
-  background: url('../images/header-five-bg.jpg') no-repeat;
-}
+
 
 /* Portfolio section styles
 /* ========================================== */
@@ -513,40 +515,6 @@ a.icon {
     margin-bottom: 4px;
 }
 
-/*filter css*/
-.filter-wrapper {
-    width: 100%;
-    margin-bottom: 32px;
-    overflow: hidden;
-}
-
-.filter-wrapper li {
-    display: inline-block;
-    margin: 4px;
-}
-
-.filter-wrapper li a {
-    color: #666;
-    font-size: 13px;
-    font-weight: 400;
-    letter-spacing: 2px;
-    padding: 8px 17px;
-    margin-right: 2px;
-    margin-left: 2px;
-    text-transform: uppercase;
-    display: block;
-    text-decoration: none;
-    transition: all 0.4s ease-in-out;
-}
-.filter-wrapper li a:active {
-  background: #111112 !important;
-}
-.filter-wrapper li a:hover,
-.filter-wrapper li a:focus {
-  background: #111112;
-  color: #ffffff;
-}
-
 /*isotope box css*/
 .iso-box-section {
     width: 100%;
@@ -579,198 +547,32 @@ a.icon {
     display: block;
 }
 
-/* single project section styles
-/* ========================================== */
-#single-project {
-  padding-top: 4rem;
-  padding-bottom: 6rem;
+.card-holder {
+	box-shadow: inset 0 0 5px  5px rgba(0,0,0,0.3);
+	padding: 1em;
+	margin:1em;
+	border-radius: 3px;
 }
 
-#single-project .project-info {
-  padding-bottom: 10px;
+#status-new {
+    background-color: #FDE3A7;
+}
+#status-planning {
+    background-color: #C5EFF7;
+}
+#status-in-progress {
+    background-color: #87D37C;
+}
+#status-done {
+    background-color: #3FC380;
 }
 
-#single-project img {
-  padding-top: 14px;
+.header {
+    text-align: center;
+    font-weight: bolder;
+    font-size: large;
+    font-family: "Verdana";
 }
-
-/* about section styles
-/* ========================================== */
-#about {
-  padding-top: 5rem;
-  padding-bottom: 8rem;
-}
-
-#about .col-md-4 {
-  padding-top: 16px;
-  padding-bottom: 32px;
-}
-
-#about img {
-  padding-bottom: 20px;
-}
-
-#about blockquote {
-  letter-spacing: 2px;
-  margin-top: 20px;
-}
-
-/* blog & single post section styles
-/* ========================================== */
-#blog, 
-#single-post {
-  padding-top: 4rem;
-  padding-bottom: 6rem;
-}
-
-#blog .blog-thumb {
-  padding-top: 60px;
-  padding-bottom: 40px;
-}
-
-#blog .post-format,
-#single-post .post-format {
-  padding-bottom: 10px;
-}
-
-#blog .post-format span,
-#single-post .post-format span {
-  color: #888;
-  font-weight: 400;
-  letter-spacing: 1px;
-  padding-right: 10px;
-}
-
-#blog .blog-thumb .btn {
-  border-radius: 0px;
-  padding: 10px 32px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  margin-top: 22px;
-  transition: all 0.4s ease-in-out;
-}
-#blog .blog-thumb .btn:hover {
-  background: #111112;
-  border-color: transparent;
-  color: #ffffff;
-}
-
-#single-post blockquote {
-  margin-top: 32px;
-  letter-spacing: 2px;
-}
-
-.post-image {
-	margin: 25px 0px;
-}
-
-#single-post .blog-comment,
-#single-post .blog-comment-form {
-  margin-top: 62px;
-}
-
-#single-post .blog-comment h3,
-#single-post .blog-comment-form h3 {
-  padding-bottom: 20px;
-}
-
-#single-post .blog-comment .media {
-  padding-bottom: 22px;
-}
-
-#single-post .blog-comment .media img {
-  padding-right: 14px;
-}
-
-#single-post .blog-comment h4 {
-  font-weight: 700;
-}
-
-#single-post .blog-comment-form .form-control {
-  background: transparent;
-  border: 1px solid #eee;
-  border-radius: 0px;
-  box-shadow: none;
-  font-size: 16px;
-  margin-bottom: 16px;
-  transition: all 0.4s ease-in-out;
-}
-
-#single-post .blog-comment-form input[type="submit"] {
-  background: #111112;
-  border-color: transparent;
-  color: #ffffff;
-  height: 50px;
-}
-
-
-/* contact section styles
-/* ========================================== */
-#contact {
-  padding-top: 5rem;
-  padding-bottom: 0rem;
-}
-
-#contact .fa {
-  font-size: 32px;
-  padding-right: 10px;
-}
-
-#contact #map-canvas  {
-  border: none;
-  width: 100%;
-  height: 300px;
-  margin-top: 40px;
-}
-
-#contact .contact-form {
-  padding-top: 14px;
-}
-
-#contact .form-control {
-  background: transparent;
-  border: 1px solid #eee;
-  border-radius: 0px;
-  box-shadow: none;
-  font-size: 16px;
-  margin-bottom: 16px;
-  transition: all 0.4s ease-in-out;
-}
-
-#contact .form-control:hover {
-  border-color: #f0f0f0;
-}
-
-#contact textarea {min-height: 100px;}
-
-#contact input {height: 50px;}
-
-#contact input[type='submit'] {
-  background: #111112;
-  color: #ffffff;
-  font-size: 15px;
-  font-weight: 400;
-  letter-spacing: 2px;
-  transition: all 0.4s ease-in-out;
-  margin-top: 10px;
-}
-
-#contact input[type='submit']:hover {
-  background: #444;
-}
-
-.contact-submit {
-	width: 50%;
-}
-
-#contact .col-md-4 {
-  background: #fff;
-  padding: 62px 0px 32px 42px;
-  position: relative;
-  bottom: -50px;
-}
-
-
 
 /* footer section styles
 /* ========================================== */
@@ -782,37 +584,6 @@ footer {
 }
 
 
-/* social icon */
-.social-icon {
-  padding: 0;
-  margin: 0;
-}
-.social-icon li {
-  list-style: none;
-  display: inline-block;
-}
-.social-icon li a {
-  border-radius: 100px;
-  border: 1px solid transparent;
-  color: #909090;
-  font-size: 18px;
-  width: 50px;
-  height: 50px;
-  line-height: 48px;
-  text-align: center;
-  vertical-align: middle;
-  text-decoration: none;
-  transition: all 0.4s ease-in-out;
-  padding: 0px;
-  margin-top: 14px;
-  margin-right: 8px;
-  margin-left: 8px;
-  position: relative;
-  top: 0px;
-}
-.social-icon li a:hover {
-  background: #ffffff;
-}
 
 /* Responsive Mobile styles
 /* ========================================== */
@@ -885,3 +656,13 @@ footer {
 @media (max-width: 450px) {
   .intro-inner {top: 50%;}
 }
+
+.btn .btn-default {
+    height: 30px;
+    width: 30px;
+    position:absolute;
+    top:0;
+    right:0;
+}
+
+
