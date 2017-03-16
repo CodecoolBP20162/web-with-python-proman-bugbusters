@@ -34,7 +34,6 @@
     <!-- Main CSS
    ================================================== -->
     <link rel="stylesheet" href="../static/css/style.css">
-    <link rel="stylesheet" href="../static/css/home.css">
 
     <!-- Google web font
    ================================================== -->
@@ -139,123 +138,7 @@
                     <!-- <button>ADD</button> -->
                     <!-- iso box section -->
                     <div class="iso-box-section wow fadeInUp" data-wow-delay="1s">
-                        <div class="iso-box-wrapper col4-iso-box">
-
-                            <div class="item iso-box col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                                <div class="portfolio-thumb draggable" draggable="true">
-
-                                    <div class="portfolio-picture">
-
-                                        <h1>Board 1</h1>
-
-                                    </div>
-
-                                    <div class="portfolio-overlay">
-                                        <div class="portfolio-item">
-                                            <div class="cards">
-                                                    <h2 class="cards">1</h2>
-                                                    <h2 class="time">3/14/2017, 10:56:16 PM</h2>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <div class="iso-box col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                                <div class="portfolio-thumb draggable" draggable="true">
-                                    <div class="portfolio-picture">
-                                        <h1>Board 2</h1>
-                                    </div>
-                                    <div class="portfolio-overlay">
-                                        <div class="portfolio-item">
-                                            <div class="cards">
-                                                <h2 class="cards">2</h2>
-                                                <h2 class="time">3/14/2017, 10:56:16 PM</h2>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="iso-box col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                                <div class="portfolio-thumb draggable" draggable="true">
-                                    <div class="portfolio-picture">
-                                        <h1>Board 3</h1>
-                                    </div>
-                                    <div class="portfolio-overlay">
-                                        <div class="portfolio-item">
-                                            <div class="cards">
-                                                <h2 class="cards">3</h2>
-                                                <h2 class="time">3/14/2017, 10:56:16 PM</h2>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="iso-box col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                                <div class="portfolio-thumb draggable" draggable="true">
-                                    <div class="portfolio-picture">
-                                        <h1>Board 4</h1>
-                                    </div>
-                                    <div class="portfolio-overlay">
-                                        <div class="portfolio-item">
-                                            <div class="cards">
-                                                <h2 class="cards">4</h2>
-                                                <h2 class="time">3/14/2017, 10:56:16 PM</h2>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="iso-box col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                                <div class="portfolio-thumb draggable" draggable="true">
-                                    <div class="portfolio-picture">
-                                        <h1>Board 5</h1>
-                                    </div>
-                                    <div class="portfolio-overlay">
-                                        <div class="portfolio-item">
-                                            <div class="cards">
-                                                <h2 class="cards">5</h2>
-                                                <h2 class="time">3/14/2017, 10:56:16 PM</h2>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="iso-box col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                                <div class="portfolio-thumb draggable" draggable="true">
-                                    <div class="portfolio-picture">
-                                        <h1>Board 6</h1>
-                                    </div>
-                                    <div class="portfolio-overlay">
-                                        <div class="portfolio-item">
-                                            <div class="cards">
-                                                <h2 class="cards">6</h2>
-                                                <h2 class="time">3/14/2017, 10:56:16 PM</h2>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="box7 iso-box col-lg-3 col-md-4 col-sm-6 col-xs-12 box7">
-                                <div class="portfolio-thumb draggable" draggable="true">
-                                    <div class="portfolio-picture">
-                                        <h1>Board 7</h1>
-                                    </div>
-                                    <div class="portfolio-overlay">
-                                        <div class="portfolio-item">
-                                            <div class="cards">
-                                                <h2 class="cards">7</h2>
-                                                <h2 class="time">3/14/2017, 10:56:16 PM</h2>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
+                        <div class="iso-box-wrapper col4-iso-box" id="board-holder"
                             </div>
 
                         </div>
@@ -281,29 +164,52 @@
             <div class="container">
             <div id="board-modal"></div>
 
-                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" style="margin-bottom: 1em; margin-top: 1em; border: solid #000; border-radius: 5px" id="new">
-                    <h2 class="text-center">New</h2>
-
+                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" id="new">
+                    <h1 class="text-center">New</h1>
+                    <div class="project project radius">
+                        <div class="project-content">
+                            <form>
+                                <input type="text" id="card-title" min="6" max="20" required placeholder="Title">
+                                <br>
+                                <input type="text" id="new_task" min="6" max="40" required placeholder="New task">
+                                <button type="submit" id="submit-card">Submit</button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
 
 
                 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12"  id="planning">
-                    <h2 class="text-center">Planning</h2>
+                    <h1 class="text-center">Planning</h1>
 
                 </div>
 
                 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12"  id="in-progress">
-                    <h2 class="text-center">In progress</h2>
+                    <h1 class="text-center">In progress</h1>
 
                 </div>
 
                 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12"  id="done">
-                    <h2 class="text-center">Done</h2>
+                    <h1 class="text-center">Done</h1>
 
                 </div>
 
             <div class="clearfix"></div>
-                <button class="btn btn-default btn-lg" style="margin-bottom: 1em" data-toggle="modal" data-target=".board-modal">Back</button>
+                <button id="vision" class="btn btn-default btn-lg" style="margin-bottom: 1em" data-toggle="modal" data-target=".board-modal">Back</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade card-modal" tabindex="-1" role="dialog" aria-labelledby="boardLabel">
+    <div class="modal-dialog modal-lg" role="document" style="width: 1200px">
+        <div class="modal-content">
+            <div class="container">
+            <div id="card-modal"></div>
+
+
+            <div class="clearfix"></div>
+                <button class="btn btn-default btn-lg" style="margin-bottom: 1em" data-toggle="modal" data-target=".card-modal">Back</button>
             </div>
         </div>
     </div>

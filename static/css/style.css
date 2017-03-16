@@ -43,6 +43,7 @@ ul {
     text-align: center;
 }
 
+
 h1 {
     color: #000;
     font-size: 1.8rem;
@@ -795,6 +796,45 @@ footer {
     right: 0;
 }
 
+
 .modal-content {
     background-color: white;
 }
+
+#new {
+    min-height: 500px;
+    max-width: 270px;
+    margin: 7px;
+    background-color: #87D37C;
+    position: relative;
+
+}
+
+#planning {
+    min-height: 500px;
+    max-width: 270px;
+    margin: 7px;
+    background-color: #87D37C;
+    position: relative;
+
+}
+
+#in-progress {
+    min-height: 500px;
+    max-width: 270px;
+    margin: 7px;
+    background-color: #87D37C;
+    position: relative;
+
+}
+
+#done {
+    min-height: 500px;
+    max-width: 270px;
+    margin: 7px;
+    background-color: #87D37C;
+    position: relative;
+
+
+}
+

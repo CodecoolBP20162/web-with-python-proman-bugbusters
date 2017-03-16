@@ -3,24 +3,23 @@ var generateData = function () {
         var boards = {};
         boards.board1 = { title: "Board #1", description: "First board", timestamp: new Date().toLocaleString(), cards: [] };
         boards.board1.cards = [{}, {}, {}];
-        boards.board1.cards[0] = { title: "First card", status: "new", elements: [1, 2, 3, 10], modified: new Date().toLocaleString() };
-        boards.board1.cards[1] = { title: "Second card", status: "planning", elements: [4, 5, 6], modified: new Date().toLocaleString() };
-        boards.board1.cards[2] = { title: "Third card", status: "done", elements: [7, 8, 9], modified: new Date().toLocaleString() };
+        boards.board1.cards[0] = { title: "First card", status: "new", elements: 'Some description', modified: new Date().toLocaleString() };
+        boards.board1.cards[1] = { title: "Second card", status: "planning", elements: 'Some description', modified: new Date().toLocaleString() };
+        boards.board1.cards[2] = { title: "Third card", status: "done", elements: 'Some description', modified: new Date().toLocaleString() };
 
         boards.board2 = { title: "Board #2", description: "Second board", timestamp: new Date().toLocaleString(), cards: [] };
         boards.board2.cards = [{}, {}, {}];
-        boards.board2.cards[0] = { title: "First card", status: "new", elements: [1, 2, 3, 20], modified: new Date().toLocaleString() };
-        boards.board2.cards[1] = { title: "Second card", status: "in-progress", elements: [4, 5, 6], modified: new Date().toLocaleString() };
-        boards.board2.cards[2] = { title: "Third card", status: "new", elements: [7, 8, 9], modified: new Date().toLocaleString() };
+        boards.board2.cards[0] = { title: "First card", status: "new", elements: 'Some description', modified: new Date().toLocaleString() };
+        boards.board2.cards[1] = { title: "Second card", status: "in-progress", elements: 'Some description', modified: new Date().toLocaleString() };
+        boards.board2.cards[2] = { title: "Third card", status: "new", elements: 'Some description', modified: new Date().toLocaleString() };
 
-        boards.board3 = { title: "Board #3", description: "Second board", timestamp: new Date().toLocaleString(), cards: [] };
-        boards.board3.cards = [{}, {}, {}];
-        boards.board3.cards[0] = { title: "First card", status: "new", elements: [1, 2, 3, 20], modified: new Date().toLocaleString() };
-        boards.board3.cards[1] = { title: "Second card", status: "new", elements: [4, 5, 6], modified: new Date().toLocaleString() };
-        boards.board3.cards[2] = { title: "Third card", status: "new", elements: [7, 8, 9], modified: new Date().toLocaleString() };
-        boards.board3.cards[3] = { title: "#4 card", status: "new", elements: [7, 8, 9], modified: new Date().toLocaleString() };
-        boards.board3.cards[4] = { title: "#5 card", status: "new", elements: [7, 8, 9], modified: new Date().toLocaleString() };
-
+        // boards.board3 = { title: "Board #3", description: "Second board", timestamp: new Date().toLocaleString(), cards: [] };
+        // boards.board3.cards = [{}, {}, {}];
+        // boards.board3.cards[0] = { title: "First card", status: "new", elements: [1, 2, 3, 20], modified: new Date().toLocaleString() };
+        // boards.board3.cards[1] = { title: "Second card", status: "new", elements: [4, 5, 6], modified: new Date().toLocaleString() };
+        // boards.board3.cards[2] = { title: "Third card", status: "planning", elements: [7, 8, 9], modified: new Date().toLocaleString() };
+        // boards.board3.cards[3] = { title: "#4 card", status: "new", elements: [7, 8, 9], modified: new Date().toLocaleString() };
+        // boards.board3.cards[4] = { title: "#5 card", status: "new", elements: [7, 8, 9], modified: new Date().toLocaleString() };
         // Store
         // Convert to JSON file and save to storage
         localStorage.boards = JSON.stringify(boards);
@@ -67,20 +66,55 @@ var generateEmptyBoard = function () {
     form.appendChild(form_button);
     form = decorateContext("portfolio-overlay portfolio-item", form);
     inputDiv.appendChild(form);
-    inputDiv = decorateContext("overlay new-card portfolio-picture", inputDiv);
-    inputDiv = decorateContext("portfolio-thumb portfolio-picture", inputDiv);
-    inputDiv = decorateContext("item iso-box new_1 col-lg-3 col-md-4 col-sm-6 col-xs-12", inputDiv);
+    inputDiv = decorateContext("overlay portfolio-picture", inputDiv);
+    var text = document.createElement('h1');
+    var instructions = document.createTextNode('Create new card');
+    text.appendChild(instructions);
+    inputDiv.appendChild(text);
+    inputDiv = decorateContext("portfolio-thumb new-card portfolio-picture", inputDiv);
+    inputDiv = decorateContext("item iso-box col-lg-3 col-md-4 col-sm-6 col-xs-12", inputDiv);
     document.getElementById("board-holder").appendChild(inputDiv);
 };
 
-
-var generateEmptyCard = function () {
-    var inputDiv = document.createElement('div');
-    inputDiv = decorateContext('project-content', inputDiv);
-    var form = document.createElement('form');
-    var title = document.
-    inputDiv = decorateContext('')
+var generateInput = function (name, min, max) {
+    var input = document.createElement("input");
+    input.setAttribute("id", name);
+    input.setAttribute("type", "text");
+    input.setAttribute("min", min);
+    input.setAttribute("max", max);
+    input.setAttribute('required', 'true');
+    input.setAttribute("placeholder", name.toUpperCase());
+    return input;
 };
+
+var getNewCardElement = function (num) {
+    var id = "card-element-"+num.toString();
+    var cardelement = generateInput(id, 6, 20);
+    return cardelement
+};
+
+
+var generateEmptyCard = function (count) {
+    var div = document.createElement('div');
+    var div = decorateContext("project-content", div);
+    var form = document.createElement('form');
+    var title = generateInput("card-title", 6, 20);
+    var new_element = generateInput("element");
+    var title_h2 = document.createTextNode("Card title");
+    var new_task = document.createTextNode("New task");
+    var button = document.createElement("button");
+    button.setAttribute("onclick", "addNewCard("+count+");");
+    form.appendChild(title_h2);
+    form.appendChild(title);
+    form.appendChild(new_task);
+    form.appendChild(new_element);
+    div.appendChild(form);
+    div = decorateContext("project project-radius draggable", div);
+    div = decorateContext("haljalmeg card card-" + count, div);
+    console.log(div);
+    return div;
+};
+
 
 var getBoards = function(data) {
     var allBoards = retrieveData(data);
@@ -95,6 +129,8 @@ var getBoards = function(data) {
         var adiv = decorateContext(count, div);
         document.getElementById("board-holder").appendChild(adiv);
         getCards(allBoards[i].cards, count);
+        // var addCard = generateEmptyCard(count);
+        // document.getElementById("new").appendChild(addCard);
         j += 1;
   }
 };
@@ -102,10 +138,10 @@ var getBoards = function(data) {
 var createProjectContent = function (board) {
     var projectContent = document.createElement("div");
     projectContent.className = "overlay portfolio-picture board";
-    var h3 = document.createElement("h3");
+    var h1 = document.createElement("h1");
     var text = document.createTextNode(board.title);
-    h3.className = "lead";
-    h3.appendChild(text);
+    h1.className = "lead";
+    h1.appendChild(text);
     var p = document.createElement("p");
     var description = document.createTextNode(board.description);
     p.appendChild(description);
@@ -210,4 +246,5 @@ var boards = retrieveData("boards");
 getBoards("boards");
 
 console.log(boards)
+
 //document.getElementById("result").outerHTML = boards.board1.cards[0].modified;
