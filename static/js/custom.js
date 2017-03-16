@@ -13,13 +13,6 @@ $(document).ready(function () {
     });
 });
 
-/* Add New Board
- ---------------------------------------------- */
-
-
-
-
-
 /* Istope Portfolio
  -----------------------------------------------*/
 jQuery(document).ready(function ($) {
@@ -115,7 +108,8 @@ $(document).ready(function () {
 
 });
 
-/* Modal
+/* Change position for Add new card section
  -------------------------------*/
+
 
 
