@@ -4,13 +4,13 @@ var generateData = function () {
         boards.board1 = { title: "Board #1", description: "First board", timestamp: new Date().toLocaleString(), cards: [] };
         boards.board1.cards = [{}, {}, {}];
         boards.board1.cards[0] = { title: "First card", status: "new", elements: [1, 2, 3, 10], modified: new Date().toLocaleString() };
-        boards.board1.cards[1] = { title: "Second card", status: "new", elements: [4, 5, 6], modified: new Date().toLocaleString() };
-        boards.board1.cards[2] = { title: "Third card", status: "new", elements: [7, 8, 9], modified: new Date().toLocaleString() };
+        boards.board1.cards[1] = { title: "Second card", status: "planning", elements: [4, 5, 6], modified: new Date().toLocaleString() };
+        boards.board1.cards[2] = { title: "Third card", status: "done", elements: [7, 8, 9], modified: new Date().toLocaleString() };
 
         boards.board2 = { title: "Board #2", description: "Second board", timestamp: new Date().toLocaleString(), cards: [] };
         boards.board2.cards = [{}, {}, {}];
         boards.board2.cards[0] = { title: "First card", status: "new", elements: [1, 2, 3, 20], modified: new Date().toLocaleString() };
-        boards.board2.cards[1] = { title: "Second card", status: "new", elements: [4, 5, 6], modified: new Date().toLocaleString() };
+        boards.board2.cards[1] = { title: "Second card", status: "in-progress", elements: [4, 5, 6], modified: new Date().toLocaleString() };
         boards.board2.cards[2] = { title: "Third card", status: "new", elements: [7, 8, 9], modified: new Date().toLocaleString() };
 
         boards.board3 = { title: "Board #3", description: "Second board", timestamp: new Date().toLocaleString(), cards: [] };
@@ -39,7 +39,7 @@ var retrieveData = function (data) {
 };
 
 
-var generetaEmptyBoard = function () {
+var generateEmptyBoard = function () {
     var inputDiv = document.createElement('div');
     inputDiv = decorateContext("portfolio-overlay portfolio-item", inputDiv);
     var form = document.createElement("form");
@@ -74,10 +74,18 @@ var generetaEmptyBoard = function () {
 };
 
 
+var generateEmptyCard = function () {
+    var inputDiv = document.createElement('div');
+    inputDiv = decorateContext('project-content', inputDiv);
+    var form = document.createElement('form');
+    var title = document.
+    inputDiv = decorateContext('')
+};
+
 var getBoards = function(data) {
     var allBoards = retrieveData(data);
     var j = 1;
-    generetaEmptyBoard();
+    generateEmptyBoard();
     for (var i in allBoards) {
         var projectContent = createProjectContent(allBoards[i]);
         var ediv = decorateContext("portfolio-thumb draggable", projectContent);
