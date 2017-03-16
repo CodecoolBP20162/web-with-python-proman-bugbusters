@@ -95,8 +95,9 @@ var generateEmptyCard = function (count) {
     div.appendChild(new_task);
     div.appendChild(new_element);
     div = decorateContext("project project-radius draggable", div);
-    div = decorateContext("card card-"+count, div);
+    div = decorateContext("card card-" + count, div);
     return div;
+}
 
 var generateEmptyCard = function () {
     var inputDiv = document.createElement('div');
@@ -236,6 +237,4 @@ function  addNewBoard() {
 // generateData();
 var boards = retrieveData("boards");
 getBoards("boards");
-
-console.log(boards)
 //document.getElementById("result").outerHTML = boards.board1.cards[0].modified;
