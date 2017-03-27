@@ -7,18 +7,22 @@ $(window).load(function () {
 
 /* Hide Header
  -----------------------------------------------*/
-if ($.cookie('hasSeenAnimation') != null) {
+if ($.cookie('hasSeenAnimation')) {
     $('#header').hide()
 }
 
 $(document).ready(function () {
     $(".fa-chevron-up").click(function () {
-        $.cookie('hasSeenAnimation', 'true');
+        $.cookie('hasSeenAnimation', true);
         $("#header").slideToggle(1000,"swing");
     });
-    $('.clear-cookie-animation').click(function () {
-        console.log('mama');
-        $.cookie('hasSeenAnimation', 'null');
+    $('.clear-cookies').click(function () {
+        var cookies = document.cookie.split(";");
+        for(var i=0; i < cookies.length; i++) {
+        var equals = cookies[i].indexOf("=");
+        var name = equals > -1 ? cookies[i].substr(0, equals) : cookies[i];
+        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+}
     })
 });
 
