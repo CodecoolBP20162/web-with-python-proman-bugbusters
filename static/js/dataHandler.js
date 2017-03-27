@@ -105,7 +105,6 @@ var generateEmptyCard = function (count) {
     div.appendChild(form);
     div = decorateContext("project project-radius draggable", div);
     div = decorateContext("haljalmeg card card-" + count, div);
-    console.log(div);
     return div;
 };
 
@@ -180,7 +179,6 @@ var getCards = function(cards, boardnum) {
         var count = "card card-"+boardnum;
         decorated = decorateContext(count, decorated);
         decorated.setAttribute("style","display: none;");
-        console.log(cards[card].status)
         document.getElementById(cards[card].status).appendChild(decorated);
 
     }
@@ -208,7 +206,7 @@ var addNewCard = function (board) {
     localStorage.boards = JSON.stringify(boards);
 };
 
-var = addNewElement(card) {
+var addNewElement = function (card) {
     var boards = retrieveData("boards");
     var name = "board-" + (Object.keys(boards).length + 1).toString();
     var title =  document.getElementById("new_element");

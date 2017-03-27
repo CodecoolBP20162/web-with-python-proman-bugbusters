@@ -1,8 +1,20 @@
+$( function() {
+  $( ".column" ).sortable({
+    connectWith: ".column",
+    handle: ".project",
+    cancel: ".portlet-toggle",
+    placeholder: "portlet-placeholder ui-corner-all"
+  });
+
+  $( ".project" )
+    .find( ".project-content" )
+      .prepend( "<span class='portlet-toggle'></span>");
+});
+
 var btn = document.querySelector('.add');
 var remove = document.querySelector('.draggable');
 
 function dragStart(e) {
-  this.style.opacity = '0.4';
   dragSrcEl = this;
   e.dataTransfer.effectAllowed = 'move';
   e.dataTransfer.setData('text/html', this.innerHTML);
