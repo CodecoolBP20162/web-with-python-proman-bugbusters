@@ -16,6 +16,10 @@ $(document).ready(function () {
         $.cookie('hasSeenAnimation', 'true');
         $("#header").slideToggle(1000,"swing");
     });
+    $('.clear-cookie-animation').click(function () {
+        console.log('mama');
+        $.cookie('hasSeenAnimation', 'null');
+    })
 });
 
 /* Istope Portfolio
