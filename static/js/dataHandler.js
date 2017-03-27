@@ -193,7 +193,6 @@ var getCards = function(cards, boardnum) {
     }
 };
 
-
 function Board(title, description) {
     this.title = title;
     this.description = description;
@@ -233,7 +232,7 @@ function  addNewBoard() {
     localStorage.boards = JSON.stringify(boards);
 };
 
-generateData();
+// generateData();
 var boards = retrieveData("boards");
 getBoards("boards");
 //document.getElementById("result").outerHTML = boards.board1.cards[0].modified;
