@@ -7,8 +7,13 @@ $(window).load(function () {
 
 /* Hide Header
  -----------------------------------------------*/
+if ($.cookie('hasSeenAnimation') != null) {
+    $('#header').hide()
+}
+
 $(document).ready(function () {
     $(".fa-chevron-up").click(function () {
+        $.cookie('hasSeenAnimation', 'true');
         $("#header").slideToggle(1000,"swing");
     });
 });
