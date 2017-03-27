@@ -13,13 +13,6 @@ var generateData = function () {
         boards.board2.cards[1] = { title: "Second card", status: "in-progress", elements: 'Some description', modified: new Date().toLocaleString() };
         boards.board2.cards[2] = { title: "Third card", status: "new", elements: 'Some description', modified: new Date().toLocaleString() };
 
-        // boards.board3 = { title: "Board #3", description: "Second board", timestamp: new Date().toLocaleString(), cards: [] };
-        // boards.board3.cards = [{}, {}, {}];
-        // boards.board3.cards[0] = { title: "First card", status: "new", elements: [1, 2, 3, 20], modified: new Date().toLocaleString() };
-        // boards.board3.cards[1] = { title: "Second card", status: "new", elements: [4, 5, 6], modified: new Date().toLocaleString() };
-        // boards.board3.cards[2] = { title: "Third card", status: "planning", elements: [7, 8, 9], modified: new Date().toLocaleString() };
-        // boards.board3.cards[3] = { title: "#4 card", status: "new", elements: [7, 8, 9], modified: new Date().toLocaleString() };
-        // boards.board3.cards[4] = { title: "#5 card", status: "new", elements: [7, 8, 9], modified: new Date().toLocaleString() };
         // Store
         // Convert to JSON file and save to storage
         localStorage.boards = JSON.stringify(boards);
@@ -193,21 +186,21 @@ var getCards = function(cards, boardnum) {
     }
 };
 
-function Board(title, description) {
+var Board = function (title, description) {
     this.title = title;
     this.description = description;
     this.timestamp = new Date().toLocaleString();
     this.cards = [];
 };
 
-function Card(title, new_task) {
+var Card = function (title, new_task) {
     this.title = title;
     this.status = "new";
     this.timestamp = new Date().toLocaleString();
     this.elements = new_task;
 };
 
-function  addNewCard(board) {
+var addNewCard = function (board) {
     var boards = retrieveData("boards");
     var title =  document.getElementById("card-title").value;
     var new_task = document.getElementById("new_task").value;
@@ -215,7 +208,7 @@ function  addNewCard(board) {
     localStorage.boards = JSON.stringify(boards);
 };
 
-function  addNewElement(card) {
+var = addNewElement(card) {
     var boards = retrieveData("boards");
     var name = "board-" + (Object.keys(boards).length + 1).toString();
     var title =  document.getElementById("new_element");
@@ -223,7 +216,7 @@ function  addNewElement(card) {
     localStorage.boards = JSON.stringify(boards);
 };
 
-function  addNewBoard() {
+var addNewBoard = function() {
     var boards = retrieveData("boards");
     var name = "board" + (Object.keys(boards).length + 1);
     var title =  document.getElementById("title").value;
@@ -232,7 +225,6 @@ function  addNewBoard() {
     localStorage.boards = JSON.stringify(boards);
 };
 
-// generateData();
+//generateData();
 var boards = retrieveData("boards");
 getBoards("boards");
-//document.getElementById("result").outerHTML = boards.board1.cards[0].modified;
