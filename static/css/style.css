@@ -843,6 +843,10 @@ footer {
     transform: scale(1.1);
 }
 
+#board-holder {
+    height: 1000px;
+}
+
 #in-progress {
     min-height: 500px;
     max-width: 270px;

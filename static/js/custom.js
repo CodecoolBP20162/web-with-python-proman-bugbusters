@@ -7,6 +7,7 @@ $(window).load(function () {
 
 /* Hide Header
  -----------------------------------------------*/
+
 if ($.cookie('hasSeenAnimation')) {
     $('#header').hide()
 }
@@ -25,33 +26,6 @@ $(document).ready(function () {
 }
     })
 });
-
-/* Istope Portfolio
- -----------------------------------------------*/
-jQuery(document).ready(function ($) {
-
-    if ($('.iso-box-wrapper').length > 0) {
-
-        var $container = $('.iso-box-wrapper'),
-            $imgs = $('.iso-box img');
-
-        $container.imagesLoaded(function () {
-
-            $container.isotope({
-                layoutMode: 'fitRows',
-                itemSelector: '.iso-box'
-            });
-
-            $imgs.load(function () {
-                $container.isotope('reLayout');
-            })
-
-        });
-
-    }
-
-});
-
 
 /* Navigation Bar
  -----------------------------------------------*/
