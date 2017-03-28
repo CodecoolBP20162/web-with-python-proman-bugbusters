@@ -151,7 +151,7 @@ var createProjectContent = function (board) {
     time.appendChild(document.createTextNode(board.timestamp));
     var cards = document.createElement("h2");
     cards.appendChild(document.createTextNode(board.cards.length));
-    projectContent.appendChild(h3);
+    projectContent.appendChild(h1);
     projectContent.appendChild(p);
     hover.appendChild(cards);
     hover.appendChild(time);
@@ -230,7 +230,7 @@ function  addNewBoard() {
     localStorage.boards = JSON.stringify(boards);
 };
 
-// generateData();
+generateData();
 var boards = retrieveData("boards");
 getBoards("boards");
 
