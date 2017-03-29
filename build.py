@@ -26,14 +26,14 @@ class Build():
                          position=board_list[i][3])
 
         # Generate cards
-        card_list = [["This is the first card!", 1, "New", 1],
-                     ["This is the second card!",  2, "New", 1],
-                     ["This is the third card!",  1, "Planning", 1],
-                     ["This is the fourth card!", 2, "Planning", 2],
-                     ["This is the fifth card!",  1, "In progress", 2],
-                     ["This is the sixth card!",  2, "In progress", 2],
-                     ["This is the seventh card!",  1, "Done", 3],
-                     ["This is the eightth card!", 2, "Done", 3]]
+        card_list = [["This is the first card!", 1, "new", 1],
+                     ["This is the second card!",  2, "new", 1],
+                     ["This is the third card!",  1, "planning", 1],
+                     ["This is the fourth card!", 2, "planning", 2],
+                     ["This is the fifth card!",  1, "in-progress", 2],
+                     ["This is the sixth card!",  2, "in-progress", 2],
+                     ["This is the seventh card!",  1, "done", 3],
+                     ["This is the eightth card!", 2, "done", 3]]
 
         for i in range(len(card_list)):
             Card.create(

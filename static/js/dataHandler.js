@@ -113,6 +113,7 @@ var getBoards = function(allBoards) {
     var j = 1;
     generateEmptyBoard();
     for (var i in allBoards) {
+        console.log(allBoards[i]);
         var projectContent = createProjectContent(allBoards[i]);
         var ediv = decorateContext("portfolio-thumb draggable", projectContent);
         ediv.setAttribute('draggable', 'true');
@@ -228,7 +229,7 @@ var getFromServer = function () {
         url: "/query",
         success: function (data) {
             console.log(data);
-            getBoards(data)
+            getBoards(JSON.parse(data))
         }
     })
 };
