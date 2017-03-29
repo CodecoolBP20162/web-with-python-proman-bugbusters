@@ -19,22 +19,21 @@ class BaseModel(Model):
         database = ConnectDatabase.db
 
 
-class User(BaseModel):
-    username = CharField()
-    password = CharField()
+# class User(BaseModel):
+#     username = CharField()
+#     password = CharField()
 
 
 class Common(BaseModel):
-    title = CharField()
     description = CharField()
-    date = DateField()
     position = CharField()
 
 
-class Board(Common):
-    user = ForeignKeyField(User)
-
-
 class Card(Common):
-    board = ForeignKeyField(Board)
     status = CharField()
+
+
+class Board(Common):
+    title = CharField()
+    date = DateField()
+    card = ForeignKeyField(Card, null=True)
