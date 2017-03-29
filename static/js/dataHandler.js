@@ -109,8 +109,7 @@ var generateEmptyCard = function (count) {
 };
 
 
-var getBoards = function(data) {
-    var allBoards = retrieveData(data);
+var getBoards = function(allBoards) {
     var j = 1;
     generateEmptyBoard();
     for (var i in allBoards) {
@@ -223,6 +222,18 @@ var addNewBoard = function() {
     localStorage.boards = JSON.stringify(boards);
 };
 
+var getFromServer = function () {
+    $.ajax({
+        type: "GET",
+        url: "/query",
+        success: function (data) {
+            console.log(data);
+            getBoards(data)
+        }
+    })
+};
+
 //generateData();
-var boards = retrieveData("boards");
-getBoards("boards");
+// var boards = retrieveData("boards");
+// getBoards(boards);
+getFromServer()

@@ -29,11 +29,11 @@ class Common(BaseModel):
     position = CharField()
 
 
-class Card(Common):
-    status = CharField()
-
-
 class Board(Common):
     title = CharField()
     date = DateField()
-    card = ForeignKeyField(Card, null=True)
+    # card = ForeignKeyField(Card, null=True)
+
+class Card(Common):
+    status = CharField()
+    board = ForeignKeyField(Board)

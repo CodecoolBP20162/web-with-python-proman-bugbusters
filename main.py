@@ -5,6 +5,8 @@ from models import *
 from build import Build
 from playhouse.shortcuts import model_to_dict, dict_to_model
 import json
+from collections import OrderedDict
+from pprint import pprint
 
 app = Flask(__name__)
 app.secret_key = 'development key'
@@ -30,12 +32,22 @@ def example():
     return render_template('example.html')
 
 
-# @app.route('/query')
-def get_all_data():
-    board = Board.select(Board, Card).join(Card)
+@app.route('/query', methods=['GET'])
+def query():
+    board = Board.select().order_by(Board.position.asc())
+    card = Card.select()
+    all_data = OrderedDict()
     for b in board:
-        print(b)
-    # return jsonify([model_to_dict(i) for i in board])
+        all_data['board'+str(b.id)] = {'title': b.title,
+                                  "description": b.description,
+                                  "timestamp": str(b.date),
+                                  "position": b.position,
+                                  'cards': []}
+
+    for c in card:
+        temp_dict = {'status': c.status, 'position': c.position, 'description': c.description}
+        all_data['board'+str(c.board.id)]['cards'].append(temp_dict)
+    return json.dumps(all_data)
 
 
 @app.route('/save', methods=['GET', 'POST'])
@@ -62,10 +74,8 @@ def save_board(data):
 def index():
     return render_template("index.html")
 
-init_db()
-build_db()
-get_all_data()
-# if __name__ == "__main__":
-#     # init_db()
-#     # build_db()
-#     app.run(debug=True)
+# init_db()
+# build_db()
+# get_all_data()
+if __name__ == "__main__":
+    app.run(debug=True)
