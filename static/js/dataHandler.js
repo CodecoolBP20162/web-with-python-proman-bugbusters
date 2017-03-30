@@ -134,6 +134,7 @@ var Card = function (title, new_task) {
 var addNewCard = function (board) {
     var boards = retrieveData("boards");
     var new_task = document.getElementById("new_task").value;
+    document.getElementById('new_task').value = '';
     var card = new Card(new_task);
     boards[board].cards.push(card);
     var projectContent = document.createElement("div");
