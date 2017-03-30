@@ -41,7 +41,6 @@ var getNewCardElement = function (num) {
 var getBoards = function(allBoards) {
     var j = 1;
     for (var i in allBoards) {
-        console.log(allBoards[i]);
         var projectContent = createProjectContent(allBoards[i]);
         var ediv = decorateContext("portfolio-thumb draggable", projectContent);
         ediv.setAttribute('draggable', 'true');
@@ -52,6 +51,7 @@ var getBoards = function(allBoards) {
         getCards(allBoards[i].cards, count);
         j += 1;
   }
+  clickSetter();
 };
 
 var createProjectContent = function (board) {
@@ -90,18 +90,32 @@ var decorateContext = function(name, context) {
 var getCards = function(cards, boardnum) {
     for (var card in cards){
         var projectContent = document.createElement("div");
-        projectContent.className = "project-content";
-        var p = document.createTextNode(cards[card].elements);
-        projectContent.appendChild(p);
+        var p = document.createElement('span');
+        var pText = document.createTextNode(cards[card].description);
         var color = ("project project-radius draggable");
         var decorated = decorateContext(color, projectContent);
-        decorated.setAttribute("draggable", true);
         var count = "card card-"+boardnum;
+        p.appendChild(pText);
+        p.className = '';
+        p.setAttribute('contenteditable', 'true');
+        p.setAttribute('onclick', '$(this).focus();');
+        p.setAttribute('id', cards[card].id.toString()+'change');
+        p.addEventListener('blur', function () {
+            var editData = {'config': 'card', 'id': cards[card].id, 'description' : pText.nodeValue };
+            changeData(editData);
+        },  false);
+        decorated.setAttribute("draggable", true);
+        projectContent.appendChild(p);
+        projectContent.className = "project-content";
         decorated = decorateContext(count, decorated);
         decorated.setAttribute("style","display: none;");
         document.getElementById(cards[card].status).appendChild(decorated);
     }
 };
+
+$(function () {
+   $('.contenteditable')
+});
 
 var Board = function (title, description) {
     this.title = title;
@@ -120,6 +134,7 @@ var Card = function (title, new_task) {
 var addNewCard = function (board) {
     var boards = retrieveData("boards");
     var new_task = document.getElementById("new_task").value;
+    document.getElementById('new_task').value = '';
     var card = new Card(new_task);
     boards[board].cards.push(card);
     var projectContent = document.createElement("div");
@@ -162,7 +177,6 @@ var getFromServer = function () {
         type: "GET",
         url: "/query",
         success: function (data) {
-            console.log(data);
             getBoards(JSON.parse(data))
         }
     })
@@ -190,6 +204,13 @@ var clickSetter = function () {
     })
 };
 
+var changeData = function (change) {
+ $.ajax({
+   type: 'POST',
+   url: '/update',
+   data: {'update' : JSON.stringify(change)
+   }
+ });
+};
 
-getBoards({"board1": {"id": 1, "cards": [{"description": "This is the first card!", "status": "new", "id": 1, "position": "1"}, {"description": "This is the second card!", "status": "new", "id": 2, "position": "2"}, {"description": "This is the third card!", "status": "planning", "id": 3, "position": "1"}], "position": "1", "description": "This is the first board!", "timestamp": "2017-03-27", "title": "Board1"}, "board2": {"id": 2, "cards": [{"description": "This is the fourth card!", "status": "planning", "id": 4, "position": "2"}, {"description": "This is the fifth card!", "status": "in-progress", "id": 5, "position": "1"}, {"description": "This is the sixth card!", "status": "in-progress", "id": 6, "position": "2"}], "position": "2", "description": "This is the second board!", "timestamp": "2017-03-27", "title": "Board2"}, "board3": {"id": 3, "cards": [{"description": "This is the seventh card!", "status": "done", "id": 7, "position": "1"}, {"description": "This is the eightth card!", "status": "done", "id": 8, "position": "2"}], "position": "3", "description": "This is the third board!", "timestamp": "2017-03-27", "title": "Board3"}, "board4": {"id": 4, "cards": [], "position": "4", "description": "This is the fourth board!", "timestamp": "2017-03-27", "title": "Board4"}});
-clickSetter();
+getFromServer();

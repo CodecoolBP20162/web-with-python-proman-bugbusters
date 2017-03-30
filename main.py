@@ -3,6 +3,7 @@ from peewee import *
 from connect_database import ConnectDatabase
 from models import *
 from build import Build
+from data_handler import *
 from playhouse.shortcuts import model_to_dict, dict_to_model
 import json
 from collections import OrderedDict
@@ -34,35 +35,20 @@ def example():
 
 @app.route('/query', methods=['GET'])
 def query():
-    board = Board.select().order_by(Board.position.asc())
-    card = Card.select()
-    all_data = OrderedDict()
-    for b in board:
-        all_data['board'+str(b.id)] = {'id': b.id, 'title': b.title,"description": b.description,"timestamp": str(b.date),"position": b.position,'cards': []}
-    for c in card:
-        temp_dict = {'status': c.status, 'position': c.position, 'description': c.description, 'id': c.id}
-        all_data['board'+str(c.board.id)]['cards'].append(temp_dict)
-    return json.dumps(all_data)
+    t = DataGetter()
+    data = t.run()
+    return json.dumps(data)
 
 
-@app.route('/save', methods=['GET', 'POST'])
-def save():
-    if request.method == "POST":
-        # board = request.json[]
-        a = request.form['json_str']
-        data = json.loads(a)
-        print(data[0]["title"])
-        return a
+@app.route('/update', methods=['POST'])
+def update():
+    data = request.form['update']
+    data_to_use = json.loads(data)
+    update = DataUpdater(data_to_use)
+    update.run()
+    return data
 
 
-def save_board(data):
-    board = Board.select()
-    for b in board:
-
-        app_slot = choice(free_slot)
-        app_slot.reserved = True
-        app_slot.save()
-        Interview.create(interview_slot=app_slot, applicant=applicant)
 
 
 @app.route("/index")
