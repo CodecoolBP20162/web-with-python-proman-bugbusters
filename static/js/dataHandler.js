@@ -191,5 +191,5 @@ var clickSetter = function () {
 };
 
 
-getFromServer();
+getBoards({"board1": {"id": 1, "cards": [{"description": "This is the first card!", "status": "new", "id": 1, "position": "1"}, {"description": "This is the second card!", "status": "new", "id": 2, "position": "2"}, {"description": "This is the third card!", "status": "planning", "id": 3, "position": "1"}], "position": "1", "description": "This is the first board!", "timestamp": "2017-03-27", "title": "Board1"}, "board2": {"id": 2, "cards": [{"description": "This is the fourth card!", "status": "planning", "id": 4, "position": "2"}, {"description": "This is the fifth card!", "status": "in-progress", "id": 5, "position": "1"}, {"description": "This is the sixth card!", "status": "in-progress", "id": 6, "position": "2"}], "position": "2", "description": "This is the second board!", "timestamp": "2017-03-27", "title": "Board2"}, "board3": {"id": 3, "cards": [{"description": "This is the seventh card!", "status": "done", "id": 7, "position": "1"}, {"description": "This is the eightth card!", "status": "done", "id": 8, "position": "2"}], "position": "3", "description": "This is the third board!", "timestamp": "2017-03-27", "title": "Board3"}, "board4": {"id": 4, "cards": [], "position": "4", "description": "This is the fourth board!", "timestamp": "2017-03-27", "title": "Board4"}});
 clickSetter();
