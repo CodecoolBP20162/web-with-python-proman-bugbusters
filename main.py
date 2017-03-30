@@ -13,10 +13,12 @@ from collections import OrderedDict
 app = Flask(__name__)
 app.secret_key = 'development key'
 
+
 def init_db():
     ConnectDatabase.db.connect()
     ConnectDatabase.db.drop_tables([Board, Card], True, True)
     ConnectDatabase.db.create_tables([Board, Card], safe=True)
+
 
 def build_db():
     Build.generate_data()
@@ -47,6 +49,18 @@ def save():
         return board
 
 
+@app.route('/saveCard', methods=['POST'])
+def save_card():
+    if request.method == "POST":
+        card = request.form['json_str']
+        data = json.loads(card)
+        Card.create(description=data["description"],
+                    position=data["position"],
+                    status=data["status"],
+                    board=data["board"])
+        return card
+
+
 @app.route('/deleteBoard', methods=['POST'])
 def delete():
     if request.method == "POST":
@@ -57,14 +71,21 @@ def delete():
         board_query.execute()
         return board_id
 
-      
+
 @app.route('/update', methods=['POST'])
 def update():
-    data = request.form['update']
+    data = request.form['json_str']
     data_to_use = json.loads(data)
     update = DataUpdater(data_to_use)
     update.run()
     return data
+
+
+@app.route("/boardLength")
+def boardLength():
+    board_length = Board.select().count()
+    return jsonify(board_length)
+
 
 @app.route("/index")
 def index():
