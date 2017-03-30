@@ -14,6 +14,14 @@ body {
     font-style: normal;
     font-weight: 300;
     position: relative;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+#portfolio {
+    flex: 1;
+
 }
 
 html, body {
@@ -50,7 +58,7 @@ h1 {
     font-weight: 700;
 }
 
-h2, ul, {
+h2, ul{
   color: #ffffff;
   font-size: 1rem;
 }
@@ -109,6 +117,8 @@ img {
 
 .project-content{
     padding: 10px 10px 10px 10px;
+    border: 2px dotted whitesmoke;
+    border-radius: 5px;
 }
 
 
@@ -479,6 +489,7 @@ a.icon {
     text-align: center;
     padding-top: 3rem;
     padding-bottom: 6rem;
+
 }
 
 #portfolio img {
@@ -639,19 +650,19 @@ h1 {
 }
 
 #status-new {
-    background-color: #FDE3A7;
+    background-color: #8effc1;
 }
 
 #status-planning {
-    background-color: #C5EFF7;
+    background-color: #5efca1;
 }
 
 #status-in-progress {
-    background-color: #87D37C;
+    background-color: #4eec91;
 }
 
 #status-done {
-    background-color: #3FC380;
+    background-color: #3edc81;
 }
 
 .header {
@@ -666,7 +677,7 @@ h1 {
 
 #new {
     max-width: 270px;
-    background-color: #FDE3A7;
+    background-color: #8effc1;
     min-height: 500px;
     margin: 7px;
     margin-top: 30px;
@@ -679,7 +690,7 @@ h1 {
 
 #planning {
     max-width: 270px;
-    background-color: #f5ab2e;
+    background-color: #5efca1;
     min-height: 500px;
     margin: 7px;
     margin-top: 30px;
@@ -692,7 +703,7 @@ h1 {
 
 #in-progress {
     max-width: 270px;
-    background-color: #87D37C;
+    background-color: #4eec91;
     min-height: 500px;
     margin: 7px;
     margin-top: 30px;
@@ -705,7 +716,7 @@ h1 {
 
 #done {
     max-width: 270px;
-    background-color: #2ECC71;
+    background-color: #3edc81;
     min-height: 500px;
     margin: 7px;
     margin-top: 30px;
@@ -721,10 +732,14 @@ h1 {
 /* ========================================== */
 footer {
     background: #141414;
-    padding-top: 120px;
-    padding-bottom: 120px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    min-width: 100%;
     text-align: center;
 }
+
+
+
 
 /* Responsive Mobile styles
 /* ========================================== */
@@ -819,7 +834,7 @@ footer {
     min-height: 500px;
     max-width: 270px;
     margin: 7px;
-    background-color: #FDE3A7;
+    background-color: #8effc1;
     position: relative;
     transition: all .2s ease-in-out;
 
@@ -833,7 +848,7 @@ footer {
     min-height: 500px;
     max-width: 270px;
     margin: 7px;
-    background-color: #F4B350;
+    background-color: #5efca1;
     position: relative;
     transition: all .2s ease-in-out;
 
@@ -843,11 +858,15 @@ footer {
     transform: scale(1.1);
 }
 
+#board-holder {
+    height: 1000px;
+}
+
 #in-progress {
     min-height: 500px;
     max-width: 270px;
     margin: 7px;
-    background-color: #C8F7C5;
+    background-color: #4eec91;
     position: relative;
     transition: all .2s ease-in-out;
 }
@@ -860,7 +879,7 @@ footer {
     min-height: 500px;
     max-width: 270px;
     margin: 7px;
-    background-color: #3FC380;
+    background-color: #3edc81;
     position: relative;
     transition: all .2s ease-in-out;
 }
@@ -869,6 +888,37 @@ footer {
     transform: scale(1.1);
 }
 
+.portlet-placeholder {
+    border: 1px dotted black;
+    margin: 0 1em 1em 0;
+    height: 50px;
+}
 
+.column {
+    border-radius: 20px;
+    height: 100%;
+}
 
+.col-head {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: whitesmoke;
+    border: 4px double whitesmoke;
+    border-radius: 10px;
+}
 
+textarea {
+    background-color: whitesmoke;
+    resize: none;
+    border-radius: 10px;
+    outline: none;
+    width: 100%;
+}
+
+button {
+    background-color: whitesmoke;
+    border: darkgrey;
+    border-radius: 7px;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: medium;
+}
