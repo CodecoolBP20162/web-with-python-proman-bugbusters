@@ -3,15 +3,15 @@ var generateData = function () {
         var boards = {};
         boards.board1 = { title: "Board #1", description: "First board", timestamp: new Date().toLocaleString(), cards: [] };
         boards.board1.cards = [{}, {}, {}];
-        boards.board1.cards[0] = { title: "First card", status: "new", elements: 'Some description', modified: new Date().toLocaleString() };
-        boards.board1.cards[1] = { title: "Second card", status: "planning", elements: 'Some description', modified: new Date().toLocaleString() };
-        boards.board1.cards[2] = { title: "Third card", status: "done", elements: 'Some description', modified: new Date().toLocaleString() };
+        boards.board1.cards[0] = { status: "new", elements: 'Some description', modified: new Date().toLocaleString() };
+        boards.board1.cards[1] = { status: "planning", elements: 'Some description', modified: new Date().toLocaleString() };
+        boards.board1.cards[2] = { status: "done", elements: 'Some description', modified: new Date().toLocaleString() };
 
         boards.board2 = { title: "Board #2", description: "Second board", timestamp: new Date().toLocaleString(), cards: [] };
         boards.board2.cards = [{}, {}, {}];
-        boards.board2.cards[0] = { title: "First card", status: "new", elements: 'Some description', modified: new Date().toLocaleString() };
-        boards.board2.cards[1] = { title: "Second card", status: "in-progress", elements: 'Some description', modified: new Date().toLocaleString() };
-        boards.board2.cards[2] = { title: "Third card", status: "new", elements: 'Some description', modified: new Date().toLocaleString() };
+        boards.board2.cards[0] = { status: "new", elements: 'Some description', modified: new Date().toLocaleString() };
+        boards.board2.cards[1] = { status: "in-progress", elements: 'Some description', modified: new Date().toLocaleString() };
+        boards.board2.cards[2] = { status: "new", elements: 'Some description', modified: new Date().toLocaleString() };
 
         // Store
         // Convert to JSON file and save to storage
@@ -31,56 +31,6 @@ var retrieveData = function (data) {
 };
 
 
-var generateEmptyBoard = function () {
-    var inputDiv = document.createElement('div');
-    inputDiv = decorateContext("portfolio-overlay portfolio-item", inputDiv);
-    var form = document.createElement("form");
-    var title = document.createElement("input");
-    title.setAttribute("id", "title");
-    title.setAttribute("type", "text");
-    title.setAttribute("min", 7);
-    title.setAttribute("max", 20);
-    title.setAttribute('required', 'true');
-    var description = document.createElement("input");
-    description.setAttribute("id", "description");
-    description.setAttribute("type", "text");
-    description.setAttribute("min", 14);
-    description.setAttribute("max", 50);
-    description.setAttribute('required', 'true');
-    var form_button = document.createElement('button');
-    form_button.setAttribute("onclick", "addNewBoard();");
-    form_button.appendChild(document.createTextNode('Submit'));
-    form.appendChild(title);
-    form.appendChild(document.createElement('br'));
-    form.appendChild(document.createElement('br'));
-    form.appendChild(description);
-    form.appendChild(document.createElement('br'));
-    form.appendChild(document.createElement('br'));
-    form.appendChild(form_button);
-    form = decorateContext("portfolio-overlay portfolio-item", form);
-    inputDiv.appendChild(form);
-    inputDiv = decorateContext("overlay portfolio-picture", inputDiv);
-    var text = document.createElement('h1');
-    text.className = 'lead';
-    var instructions = document.createTextNode('Create new card');
-    text.appendChild(instructions);
-    inputDiv.appendChild(text);
-    inputDiv = decorateContext("portfolio-thumb new-card portfolio-picture", inputDiv);
-    inputDiv = decorateContext("item iso-box col-lg-3 col-md-4 col-sm-6 col-xs-12", inputDiv);
-    document.getElementById("board-holder").appendChild(inputDiv);
-};
-
-var generateInput = function (name, min, max) {
-    var input = document.createElement("input");
-    input.setAttribute("id", name);
-    input.setAttribute("type", "text");
-    input.setAttribute("min", min);
-    input.setAttribute("max", max);
-    input.setAttribute('required', 'true');
-    input.setAttribute("placeholder", name.toUpperCase());
-    return input;
-};
-
 var getNewCardElement = function (num) {
     var id = "card-element-"+num.toString();
     var cardelement = generateInput(id, 6, 20);
@@ -88,30 +38,8 @@ var getNewCardElement = function (num) {
 };
 
 
-var generateEmptyCard = function (count) {
-    var div = document.createElement('div');
-    var div = decorateContext("project-content", div);
-    var form = document.createElement('form');
-    var title = generateInput("card-title", 6, 20);
-    var new_element = generateInput("element");
-    var title_h2 = document.createTextNode("Card title");
-    var new_task = document.createTextNode("New task");
-    var button = document.createElement("button");
-    button.setAttribute("onclick", "addNewCard("+count+");");
-    form.appendChild(title_h2);
-    form.appendChild(title);
-    form.appendChild(new_task);
-    form.appendChild(new_element);
-    div.appendChild(form);
-    div = decorateContext("project project-radius draggable", div);
-    div = decorateContext("haljalmeg card card-" + count, div);
-    return div;
-};
-
-
 var getBoards = function(allBoards) {
     var j = 1;
-    generateEmptyBoard();
     for (var i in allBoards) {
         console.log(allBoards[i]);
         var projectContent = createProjectContent(allBoards[i]);
@@ -122,8 +50,6 @@ var getBoards = function(allBoards) {
         var adiv = decorateContext(count, div);
         document.getElementById("board-holder").appendChild(adiv);
         getCards(allBoards[i].cards, count);
-        // var addCard = generateEmptyCard(count);
-        // document.getElementById("new").appendChild(addCard);
         j += 1;
   }
 };
@@ -165,13 +91,7 @@ var getCards = function(cards, boardnum) {
     for (var card in cards){
         var projectContent = document.createElement("div");
         projectContent.className = "project-content";
-        var h1 = document.createElement("h2");
-        h1.className = 'text-center';
-        var text = document.createTextNode(cards[card].title);
-        h1.className = "lead";
-        h1.appendChild(text);
         var p = document.createTextNode(cards[card].elements);
-        projectContent.appendChild(h1);
         projectContent.appendChild(p);
         var color = ("project project-radius draggable");
         var decorated = decorateContext(color, projectContent);
@@ -180,7 +100,6 @@ var getCards = function(cards, boardnum) {
         decorated = decorateContext(count, decorated);
         decorated.setAttribute("style","display: none;");
         document.getElementById(cards[card].status).appendChild(decorated);
-
     }
 };
 
@@ -200,19 +119,23 @@ var Card = function (title, new_task) {
 
 var addNewCard = function (board) {
     var boards = retrieveData("boards");
-    var title =  document.getElementById("card-title").value;
     var new_task = document.getElementById("new_task").value;
-    boards[board].cards.push(new Card(title, new_task));
+    var card = new Card(new_task);
+    boards[board].cards.push(card);
+    var projectContent = document.createElement("div");
+    projectContent.className = "project-content";
+    var p = document.createTextNode(new_task);
+    projectContent.appendChild(p);
+    var color = ("project project-radius draggable");
+    var decorated = decorateContext(color, projectContent);
+    decorated.setAttribute("draggable", true);
+    var count = "card card-"+board;
+    decorated = decorateContext(count, decorated);
+    decorated.setAttribute("style","display: block;");
+    document.getElementById(card.status).appendChild(decorated);
     localStorage.boards = JSON.stringify(boards);
 };
 
-var addNewElement = function (card) {
-    var boards = retrieveData("boards");
-    var name = "board-" + (Object.keys(boards).length + 1).toString();
-    var title =  document.getElementById("new_element");
-    boards[board].cards.elements.push(new Card(title));
-    localStorage.boards = JSON.stringify(boards);
-};
 
 var addNewBoard = function() {
     var boards = retrieveData("boards");
@@ -220,6 +143,17 @@ var addNewBoard = function() {
     var title =  document.getElementById("title").value;
     var description =  document.getElementById("description").value;
     boards[name] = new Board(title, description);
+    var projectContent = createProjectContent(boards[name]);
+    var ediv = decorateContext("portfolio-thumb draggable", projectContent);
+    ediv.setAttribute('draggable', 'true');
+    var div = decorateContext("item iso-box col-lg-3 col-md-4 col-sm-6 col-xs-12", ediv);
+    var count = "board"+(Object.keys(boards).length).toString();
+    var adiv = decorateContext(count, div);
+    document.getElementById("board-holder").appendChild(adiv);
+    getCards(boards[name].cards, count);
+    document.getElementById("description").value = ("");
+    document.getElementById("title").value = ("");
+    clickSetter();
     localStorage.boards = JSON.stringify(boards);
 };
 
@@ -234,7 +168,28 @@ var getFromServer = function () {
     })
 };
 
-//generateData();
-// var boards = retrieveData("boards");
-// getBoards(boards);
-getFromServer()
+
+var clickSetter = function () {
+    $(".board").attr("data-toggle", "modal").attr("data-target", ".board-modal").attr("draggable", "true").attr('style', 'cursor:pointer;').click(function () {
+        $.each(retrieveData('boards'), function (board, value) {
+            $('.' + board).each(function () {
+                $(this).click(function () {
+                    $('#submit-card').attr('onclick', 'addNewCard("'+board+'");');
+                    $('.card').hide();
+                    $('.card-' + board).toggle();
+                });
+            })
+        });
+    });
+    $('#vision').click(function () {
+        $('.card').hide();
+        $('#submit-card').removeAttr('onclick');
+    });
+    $('#submit-card').click(function () {
+        $(this).removeAttr()
+    })
+};
+
+
+getFromServer();
+clickSetter();
