@@ -78,3 +78,4 @@ var listItems = document.querySelectorAll('.draggable');
 [].forEach.call(listItems, function(item) {
   addEventsDragAndDrop(item);
 });
+
