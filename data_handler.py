@@ -13,7 +13,7 @@ class DataGetter:
     def run(self):
         for b in self.board:
             self.all_data['board' + str(b.id)] = {'id': b.id, 'title': b.title, "description": b.description,
-                                "timestamp": str(b.date), "position": b.position, 'cards': []}
+                                                  "timestamp": str(b.date), "position": b.position, 'cards': []}
         for c in self.card:
             temp_dict = {'status': c.status, 'position': c.position, 'description': c.description, 'id': c.id}
             self.all_data['board' + str(c.board.id)]['cards'].append(temp_dict)
@@ -33,7 +33,6 @@ class DataUpdater:
         elif self.dictionary['config'] == 'board':
             self.modify_board()
 
-
     def modify_card(self):
         for card in self.cards:
             if 'description' in self.dictionary:
@@ -45,7 +44,6 @@ class DataUpdater:
             if 'position' in self.dictionary:
                 card.position = self.dictionary['position']
                 card.save()
-
 
     def modify_board(self):
         for board in self.boards:

@@ -96,20 +96,26 @@ var getCards = function (cards, boardnum) {
     for (var card in cards) {
         var projectContent = document.createElement("div");
 
-        var p = document.createElement('span');
-        var pText = document.createTextNode(cards[card].description);
+        projectContent.className = "project-content";
+        var p = document.createTextNode(cards[card].description);
+        projectContent.appendChild(p);
+
+
+        // var p = document.createElement('span');
+        // var pText = document.createTextNode(cards[card].description);
+
         var color = ("project project-radius draggable");
         var decorated = decorateContext(color, projectContent);
-        var count = "card card-"+boardnum;
+        var count = "card card-" + boardnum;
         p.appendChild(pText);
         p.className = '';
         p.setAttribute('contenteditable', 'true');
         p.setAttribute('onclick', '$(this).focus();');
-        p.setAttribute('id', cards[card].id.toString()+'change');
+        p.setAttribute('id', cards[card].id.toString() + 'change');
         p.addEventListener('blur', function () {
-            var editData = {'config': 'card', 'id': cards[card].id, 'description' : pText.nodeValue };
-            changeData(editData);
-        },  false);
+            var editData = { 'config': 'card', 'id': cards[card].id, 'description': pText.nodeValue };
+            boardHandling(editData, '/update');
+        }, false);
         decorated.setAttribute("draggable", true);
         projectContent.appendChild(p);
         projectContent.className = "project-content";
@@ -120,7 +126,7 @@ var getCards = function (cards, boardnum) {
 };
 
 $(function () {
-   $('.contenteditable')
+    $('.contenteditable')
 });
 
 var Board = function (title, description) {
@@ -130,19 +136,17 @@ var Board = function (title, description) {
     this.cards = [];
 };
 
-var Card = function (title, new_task) {
-    this.title = title;
+var Card = function (new_task, board) {
+    this.board = board;
     this.status = "new";
-    this.timestamp = new Date().toLocaleString();
-    this.elements = new_task;
+    this.description = new_task;
+    this.position = 99;
 };
 
 var addNewCard = function (board) {
-    var boards = retrieveData("boards");
     var new_task = document.getElementById("new_task").value;
     document.getElementById('new_task').value = '';
-    var card = new Card(new_task);
-    boards[board].cards.push(card);
+    var card = new Card(new_task, board.slice(5));
     var projectContent = document.createElement("div");
     projectContent.className = "project-content";
     var p = document.createTextNode(new_task);
@@ -154,13 +158,17 @@ var addNewCard = function (board) {
     decorated = decorateContext(count, decorated);
     decorated.setAttribute("style", "display: block;");
     document.getElementById(card.status).appendChild(decorated);
-    localStorage.boards = JSON.stringify(boards);
+    boardHandling(card, "/saveCard");
+
 };
 
 
 var addNewBoard = function () {
     var boards = retrieveData("boards");
+    var boardsLength = ajaxGET("/boardLength")
+    console.log(boardsLength)
     var name = "board" + (Object.keys(boards).length + 1);
+
     var title = document.getElementById("title").value;
     var description = document.getElementById("description").value;
     boards[name] = new Board(title, description);
@@ -213,6 +221,7 @@ var clickSetter = function () {
 };
 
 
+
 //-------------Ajax---------------------
 var boardHandling = function (board, route) {
     $.ajax({
@@ -227,5 +236,18 @@ var boardHandling = function (board, route) {
     });
 };
 
+var ajaxGET = function (route) {
+    $.ajax({
+        type: "GET",
+        url: route,
+        data: response,
+        dataType: "json",
+
+    });
+    return data
+};
+
+
 getFromServer();
+
 

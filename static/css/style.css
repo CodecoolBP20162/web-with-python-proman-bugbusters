@@ -117,6 +117,8 @@ img {
 
 .project-content{
     padding: 10px 10px 10px 10px;
+    border: 2px dotted whitesmoke;
+    border-radius: 5px;
 }
 
 
@@ -887,7 +889,36 @@ footer {
 }
 
 .portlet-placeholder {
-border: 1px dotted black;
-margin: 0 1em 1em 0;
-height: 50px;
+    border: 1px dotted black;
+    margin: 0 1em 1em 0;
+    height: 50px;
+}
+
+.column {
+    border-radius: 20px;
+    height: 100%;
+}
+
+.col-head {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: whitesmoke;
+    border: 4px double whitesmoke;
+    border-radius: 10px;
+}
+
+textarea {
+    background-color: whitesmoke;
+    resize: none;
+    border-radius: 10px;
+    outline: none;
+    width: 100%;
+}
+
+button {
+    background-color: whitesmoke;
+    border: darkgrey;
+    border-radius: 7px;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: medium;
 }
