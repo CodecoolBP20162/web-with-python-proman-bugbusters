@@ -1,6 +1,5 @@
 from connect_database import *
 from peewee import *
-from datetime import date
 
 
 class BaseModel(Model):
@@ -26,13 +25,14 @@ class BaseModel(Model):
 
 class Common(BaseModel):
     description = CharField()
-    position = CharField()
+    position = IntegerField()
 
 
 class Board(Common):
     title = CharField()
-    date = DateField()
+    date = CharField()
     # card = ForeignKeyField(Card, null=True)
+
 
 class Card(Common):
     status = CharField()
