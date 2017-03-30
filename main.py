@@ -70,8 +70,9 @@ def update():
 def index():
     return render_template("index.html")
 
-init_db()
-build_db()
+
 # get_all_data()
 if __name__ == "__main__":
+    init_db()
+    build_db()
     app.run(debug=True)
