@@ -38,10 +38,10 @@ var getNewCardElement = function (num) {
 };
 
 
-var getBoards = function(data) {
-    var allBoards = retrieveData(data);
+var getBoards = function(allBoards) {
     var j = 1;
     for (var i in allBoards) {
+        console.log(allBoards[i]);
         var projectContent = createProjectContent(allBoards[i]);
         var ediv = decorateContext("portfolio-thumb draggable", projectContent);
         ediv.setAttribute('draggable', 'true');
@@ -157,6 +157,18 @@ var addNewBoard = function() {
     localStorage.boards = JSON.stringify(boards);
 };
 
+var getFromServer = function () {
+    $.ajax({
+        type: "GET",
+        url: "/query",
+        success: function (data) {
+            console.log(data);
+            getBoards(JSON.parse(data))
+        }
+    })
+};
+
+
 var clickSetter = function () {
     $(".board").attr("data-toggle", "modal").attr("data-target", ".board-modal").attr("draggable", "true").attr('style', 'cursor:pointer;').click(function () {
         $.each(retrieveData('boards'), function (board, value) {
@@ -179,6 +191,5 @@ var clickSetter = function () {
 };
 
 
-//generateData();
-getBoards("boards");
+getFromServer();
 clickSetter();
