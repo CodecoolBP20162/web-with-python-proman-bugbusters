@@ -10,6 +10,7 @@ $(function () {
       var statusToSend = parent.getAttribute('id');
       var posToSend = ui.item.index();
       boardHandling({ 'config': 'card', 'id': idToSend, 'status': statusToSend, 'position': posToSend }, '/update');
+
     },
     connectWith: ".column",
     handle: ".project",
