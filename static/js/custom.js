@@ -95,8 +95,4 @@ $(document).ready(function () {
 
 });
 
-/* Change position for Add new card section
- -------------------------------*/
-
-
 

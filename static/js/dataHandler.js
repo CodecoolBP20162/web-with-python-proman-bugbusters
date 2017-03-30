@@ -96,8 +96,14 @@ var getCards = function (cards, boardnum) {
     for (var card in cards) {
         var projectContent = document.createElement("div");
 
-        var p = document.createElement('span');
-        var pText = document.createTextNode(cards[card].description);
+        projectContent.className = "project-content";
+        var p = document.createTextNode(cards[card].description);
+        projectContent.appendChild(p);
+
+
+        // var p = document.createElement('span');
+        // var pText = document.createTextNode(cards[card].description);
+
         var color = ("project project-radius draggable");
         var decorated = decorateContext(color, projectContent);
         var count = "card card-" + boardnum;
@@ -215,6 +221,7 @@ var clickSetter = function () {
 };
 
 
+
 //-------------Ajax---------------------
 var boardHandling = function (board, route) {
     $.ajax({
@@ -242,4 +249,5 @@ var ajaxGET = function (route) {
 
 
 getFromServer();
+
 
