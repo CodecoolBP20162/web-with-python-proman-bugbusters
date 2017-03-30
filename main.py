@@ -1,24 +1,22 @@
 import json
 from collections import OrderedDict
 from pprint import pprint
-
 from flask import *
 from peewee import *
-from playhouse.shortcuts import dict_to_model, model_to_dict
-
 from build import Build
 from connect_database import ConnectDatabase
 from models import *
+from data_handler import *
+from collections import OrderedDict
+
 
 app = Flask(__name__)
 app.secret_key = 'development key'
-
 
 def init_db():
     ConnectDatabase.db.connect()
     ConnectDatabase.db.drop_tables([Board, Card], True, True)
     ConnectDatabase.db.create_tables([Board, Card], safe=True)
-
 
 def build_db():
     Build.generate_data()
@@ -31,16 +29,9 @@ def home():
 
 @app.route('/query', methods=['GET'])
 def query():
-    board = Board.select().order_by(Board.position.asc())
-    card = Card.select()
-    all_data = OrderedDict()
-    for b in board:
-        all_data['board' + str(b.id)] = {'id': b.id, 'title': b.title, "description": b.description,
-                                         "timestamp": str(b.date), "position": b.position, 'cards': []}
-    for c in card:
-        temp_dict = {'status': c.status, 'position': c.position, 'description': c.description, 'id': c.id}
-        all_data['board' + str(c.board.id)]['cards'].append(temp_dict)
-    return json.dumps(all_data)
+    t = DataGetter()
+    data = t.run()
+    return json.dumps(data)
 
 
 @app.route('/saveBoard', methods=['POST'])
@@ -64,9 +55,16 @@ def delete():
         card_query = Card.delete().where(Card.board == board_id)
         card_query.execute()
         board_query.execute()
-
         return board_id
 
+      
+@app.route('/update', methods=['POST'])
+def update():
+    data = request.form['update']
+    data_to_use = json.loads(data)
+    update = DataUpdater(data_to_use)
+    update.run()
+    return data
 
 @app.route("/index")
 def index():

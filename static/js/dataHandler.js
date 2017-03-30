@@ -95,18 +95,33 @@ var decorateContext = function (name, context) {
 var getCards = function (cards, boardnum) {
     for (var card in cards) {
         var projectContent = document.createElement("div");
-        projectContent.className = "project-content";
-        var p = document.createTextNode(cards[card].description);
-        projectContent.appendChild(p);
+
+        var p = document.createElement('span');
+        var pText = document.createTextNode(cards[card].description);
         var color = ("project project-radius draggable");
         var decorated = decorateContext(color, projectContent);
+        var count = "card card-"+boardnum;
+        p.appendChild(pText);
+        p.className = '';
+        p.setAttribute('contenteditable', 'true');
+        p.setAttribute('onclick', '$(this).focus();');
+        p.setAttribute('id', cards[card].id.toString()+'change');
+        p.addEventListener('blur', function () {
+            var editData = {'config': 'card', 'id': cards[card].id, 'description' : pText.nodeValue };
+            changeData(editData);
+        },  false);
         decorated.setAttribute("draggable", true);
-        var count = "card card-" + boardnum;
+        projectContent.appendChild(p);
+        projectContent.className = "project-content";
         decorated = decorateContext(count, decorated);
         decorated.setAttribute("style", "display: none;");
         document.getElementById(cards[card].status).appendChild(decorated);
     }
 };
+
+$(function () {
+   $('.contenteditable')
+});
 
 var Board = function (title, description) {
     this.title = title;
@@ -125,6 +140,7 @@ var Card = function (title, new_task) {
 var addNewCard = function (board) {
     var boards = retrieveData("boards");
     var new_task = document.getElementById("new_task").value;
+    document.getElementById('new_task').value = '';
     var card = new Card(new_task);
     boards[board].cards.push(card);
     var projectContent = document.createElement("div");
@@ -195,6 +211,7 @@ var clickSetter = function () {
         $(this).removeAttr()
     })
 };
+
 
 //-------------Ajax---------------------
 var boardHandling = function (board, route) {
