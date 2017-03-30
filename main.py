@@ -38,14 +38,9 @@ def query():
     card = Card.select()
     all_data = OrderedDict()
     for b in board:
-        all_data['board'+str(b.id)] = {'title': b.title,
-                                  "description": b.description,
-                                  "timestamp": str(b.date),
-                                  "position": b.position,
-                                  'cards': []}
-
+        all_data['board'+str(b.id)] = {'id': b.id, 'title': b.title,"description": b.description,"timestamp": str(b.date),"position": b.position,'cards': []}
     for c in card:
-        temp_dict = {'status': c.status, 'position': c.position, 'description': c.description}
+        temp_dict = {'status': c.status, 'position': c.position, 'description': c.description, 'id': c.id}
         all_data['board'+str(c.board.id)]['cards'].append(temp_dict)
     return json.dumps(all_data)
 
