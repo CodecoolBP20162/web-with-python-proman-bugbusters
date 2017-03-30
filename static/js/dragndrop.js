@@ -1,13 +1,16 @@
 /* Drag and drop for coloumns, now alerts with placement
 ------------------------------------------------ */
-$( function() {
-  $( ".column" ).sortable({
+$(function () {
+  $(".column").sortable({
     /* Position extracted here, and status
     ---------------------------------------*/
     stop: function (event, ui) {
-        alert('New position: ' + ui.item.index());
-        var parent = ui.item[0].parentNode;
-        alert(parent.getAttribute('id'));
+      var parent = ui.item[0].parentNode;
+      var idToSend = ui.item.context.firstElementChild.firstElementChild.childNodes[0].id[0];
+      var statusToSend = parent.getAttribute('id');
+      var posToSend = ui.item.index();
+      boardHandling({ 'config': 'card', 'id': idToSend, 'status': statusToSend, 'position': posToSend }, '/update');
+
     },
     connectWith: ".column",
     handle: ".project",
@@ -15,11 +18,10 @@ $( function() {
     placeholder: "portlet-placeholder ui-corner-all"
   });
 
-  $( ".project" )
-    .find( ".project-content" )
-      .prepend( "<span class='portlet-toggle'></span>");
+  $(".project")
+    .find(".project-content")
+    .prepend("<span class='portlet-toggle'></span>");
 });
-
 
 /* Drag and drop main page
 ------------------------------------------------ */
@@ -60,7 +62,7 @@ function dragDrop(e) {
 
 function dragEnd(e) {
   var listItems = document.querySelectorAll('.draggable');
-  [].forEach.call(listItems, function(item) {
+  [].forEach.call(listItems, function (item) {
     item.classList.remove('over');
   });
 }
@@ -75,7 +77,7 @@ function addEventsDragAndDrop(el) {
 }
 
 var listItems = document.querySelectorAll('.draggable');
-[].forEach.call(listItems, function(item) {
+[].forEach.call(listItems, function (item) {
   addEventsDragAndDrop(item);
 });
 

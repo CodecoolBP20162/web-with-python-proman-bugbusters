@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!--
 
@@ -41,78 +42,82 @@
     <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,300' rel='stylesheet' type='text/css'>
 
 </head>
+
 <body>
 
 
-<!-- Preloader section
+    <!-- Preloader section
 ================================================== -->
-<div class="preloader">
+    <div class="preloader">
 
-    <div class="sk-spinner sk-spinner-pulse"></div>
+        <div class="sk-spinner sk-spinner-pulse"></div>
 
-</div>
+    </div>
 
 
-<!-- Navigation section
+    <!-- Navigation section
 ================================================== -->
-<div class="nav-container ">
-    <nav class="nav-inner transparent">
+    <div class="nav-container ">
+        <nav class="nav-inner transparent">
 
-        <div class="navbar">
+            <div class="navbar">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="brand">
+                            <a class="clear-cookies" href="">ProMan</a>
+                        </div>
+
+                        <div class="navicon">
+                            <div class="menu-container">
+
+                                <div class="circle dark inline">
+                                    <i class="icon ion-navicon"></i>
+                                </div>
+
+                                <div class="list-menu">
+                                    <i class="icon ion-close-round close-iframe"></i>
+                                    <div class="intro-inner">
+                                        <ul id="nav-menu">
+                                            <li><a href="">Home</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </nav>
+    </div>
+
+
+    <!-- Header section
+================================================== -->
+    <div class="close-welcome">
+
+        <div id="header" class="header-one">
+
             <div class="container">
                 <div class="row">
 
-                    <div class="brand">
-                        <a class="clear-cookies" href="">ProMan</a>
-                    </div>
-
-                    <div class="navicon">
-                        <div class="menu-container">
-
-                            <div class="circle dark inline">
-                                <i class="icon ion-navicon"></i>
-                            </div>
-
-                            <div class="list-menu">
-                                <i class="icon ion-close-round close-iframe"></i>
-                                <div class="intro-inner">
-                                    <ul id="nav-menu">
-                                        <li><a href="">Home</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-
+                    <div class="col-md-offset-3 col-md-6 col-sm-offset-2 col-sm-8">
+                        <div class="header-thumb">
+                            <h1 class="wow fadeIn" data-wow-delay="1.6s">Welcome to Proman</h1>
+                            <h3 class="wow fadeInUp" data-wow-delay="1.9s">Task tracking as you have never seen before</h3>
                         </div>
-                    </div>
 
-                </div>
-            </div>
-        </div>
-
-    </nav>
-</div>
-
-
-<!-- Header section
-================================================== -->
-<div class="close-welcome">
-
-    <div id="header" class="header-one">
-
-        <div class="container">
-            <div class="row">
-
-                <div class="col-md-offset-3 col-md-6 col-sm-offset-2 col-sm-8">
-                    <div class="header-thumb">
-                        <h1 class="wow fadeIn" data-wow-delay="1.6s">Welcome to Proman</h1>
-                        <h3 class="wow fadeInUp" data-wow-delay="1.9s">Task tracking as you have never seen before</h3>
                     </div>
 
                 </div>
 
             </div>
+            <div>
+                <p>
 
-        </div>
         <div>
             <p>
 
@@ -121,12 +126,13 @@
         <div>
             <button type="button" class="btn btn-default fa fa-chevron-up" aria-hidden="true"
             "></button>
+
         </div>
     </div>
-</div>
 
-<!-- Boards section
+    <!-- Boards section
 ================================================== -->
+
 <section id="portfolio">
     <div class="container">
         <div class="row">
@@ -150,10 +156,13 @@
                                                                required="true" placeholder="Board Title"><br><br>
                                                         <input id="description" type="text" min="14" max="50"
                                                                required="true" placeholder="Description"><br><br>
+
                                                         <button type="button" onclick="addNewBoard();">Submit</button>
                                                     </form>
                                                 </div>
+                                                <h1 class="lead">Create new board</h1>
                                             </div>
+
                                             <h1 class="lead">Create new <br> board</h1></div>
                                     </div>
                                 </div>
@@ -163,12 +172,12 @@
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
 
-<!-- Cards section - Modal
+    <!-- Cards section - Modal
 ================================================== -->
+
 <div id="result"></div>
 
 
@@ -194,32 +203,42 @@
                                 </form>
                             </div>
 
+
+                            </div>
                         </div>
                     </div>
-                </div>
+
 
 
                 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 column" id="planning">
                     <h1 class="text-center col-head">Planning</h1>
 
-                </div>
+
+                    </div>
+
 
                 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 column" id="in-progress">
                     <h1 class="text-center col-head">In progress</h1>
 
-                </div>
+
+                    </div>
+
 
                 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 column" style="margin-bottom: 2em" id="done">
                     <h1 class="text-center col-head">Done</h1>
 
+
+                    </div>
+
+
                 </div>
-
-
             </div>
+
             <br>
+
         </div>
     </div>
-</div>
+
 
 <div class="modal fade card-modal" tabindex="-1" role="dialog" aria-labelledby="boardLabel">
     <div class="modal-dialog modal-lg" role="document" style="width: 1200px">
@@ -234,10 +253,12 @@
                 </button>
 
 
+
+                </div>
             </div>
         </div>
     </div>
-</div>
+
 
 
 <div class="modal fade card-modal" tabindex="-1" role="dialog" aria-labelledby="boardLabel">
@@ -251,40 +272,42 @@
                 <button class="btn btn-default btn-lg" style="margin-bottom: 1em" data-toggle="modal"
                         data-target=".card-modal">Back
                 </button>
+
             </div>
         </div>
     </div>
-</div>
 
 
-<!-- Footer section
+    <!-- Footer section
 ================================================== -->
-<footer class="footer">
-    <div class="container">
-        <div class="row">
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
 
-            <div class="col-md-12 col-sm-12">
-                <p class="wow fadeInUp" data-wow-delay="0.3s">Copyright © 2017 BugBusters</p>
+                <div class="col-md-12 col-sm-12">
+                    <p class="wow fadeInUp" data-wow-delay="0.3s">Copyright © 2017 BugBusters</p>
+                </div>
+
             </div>
-
         </div>
-    </div>
-</footer>
+    </footer>
 
 
-<!-- Javascript
+
+<!-- Javascript 
 ================================================== -->
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script src="../static/js/cookie.js"></script>
-<script src="../static/js/bootstrap.min.js"></script>
-<script src="../static/js/isotope.js"></script>
-<script src="../static/js/imagesloaded.min.js"></script>
-<script src="../static/js/wow.min.js"></script>
-<script src="../static/js/dataHandler.js"></script>
-<script src="../static/js/custom.js"></script>
-<script src="../static/js/dragndrop.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="../static/js/cookie.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <script src="../static/js/isotope.js"></script>
+    <script src="../static/js/imagesloaded.min.js"></script>
+    <script src="../static/js/wow.min.js"></script>
+    <script src="../static/js/dataHandler.js"></script>
+    <script src="../static/js/custom.js"></script>
+    <script src="../static/js/dragndrop.js"></script>
 
 
 </body>
+
 </html>
