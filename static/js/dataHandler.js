@@ -162,10 +162,9 @@ var addNewCard = function (board) {
 
 var addNewBoard = function () {
     var boards = retrieveData("boards");
-    var boardsLength = ajaxGET("/boardLength")
-    console.log(boardsLength)
+    var boardsLength = ajaxGET("/boardLength");
+    console.log(boardsLength);
     var name = "board" + (Object.keys(boards).length + 1);
-
     var title = document.getElementById("title").value;
     var description = document.getElementById("description").value;
     boards[name] = new Board(title, description);
@@ -229,7 +228,7 @@ var boardHandling = function (board, route) {
             JSON.stringify(board)
         },
 
-        dataType: "json",
+        dataType: "json"
     });
 };
 
@@ -238,7 +237,7 @@ var ajaxGET = function (route) {
         type: "GET",
         url: route,
         data: response,
-        dataType: "json",
+        dataType: "json"
 
     });
     return data
