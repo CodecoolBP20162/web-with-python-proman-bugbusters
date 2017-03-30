@@ -5,9 +5,11 @@ $( function() {
     /* Position extracted here, and status
     ---------------------------------------*/
     stop: function (event, ui) {
-        alert('New position: ' + ui.item.index());
         var parent = ui.item[0].parentNode;
-        alert(parent.getAttribute('id'));
+        var idToSend = ui.item.context.firstElementChild.firstElementChild.childNodes[0].id[0];
+        var statusToSend = parent.getAttribute('id');
+        var posToSend = ui.item.index();
+        changeData({'config':'card','id': idToSend, 'status':statusToSend, 'position':posToSend});
     },
     connectWith: ".column",
     handle: ".project",
@@ -19,7 +21,6 @@ $( function() {
     .find( ".project-content" )
       .prepend( "<span class='portlet-toggle'></span>");
 });
-
 
 /* Drag and drop main page
 ------------------------------------------------ */
