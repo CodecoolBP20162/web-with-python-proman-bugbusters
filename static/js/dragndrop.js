@@ -9,7 +9,7 @@ $( function() {
         var idToSend = ui.item.context.firstElementChild.firstElementChild.childNodes[0].id[0];
         var statusToSend = parent.getAttribute('id');
         var posToSend = ui.item.index();
-        changeData({'config':'card','id': idToSend, 'status':statusToSend, 'position':posToSend});
+        boardHandling({'config':'card','id': idToSend, 'status':statusToSend, 'position':posToSend}, '/update');
     },
     connectWith: ".column",
     handle: ".project",

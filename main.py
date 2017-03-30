@@ -60,7 +60,7 @@ def delete():
       
 @app.route('/update', methods=['POST'])
 def update():
-    data = request.form['update']
+    data = request.form['json_str']
     data_to_use = json.loads(data)
     update = DataUpdater(data_to_use)
     update.run()
