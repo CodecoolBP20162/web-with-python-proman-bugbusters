@@ -7,38 +7,25 @@ $(window).load(function () {
 
 /* Hide Header
  -----------------------------------------------*/
+
+if ($.cookie('hasSeenAnimation')) {
+    $('#header').hide()
+}
+
 $(document).ready(function () {
     $(".fa-chevron-up").click(function () {
+        $.cookie('hasSeenAnimation', true);
         $("#header").slideToggle(1000,"swing");
     });
+    $('.clear-cookies').click(function () {
+        var cookies = document.cookie.split(";");
+        for(var i=0; i < cookies.length; i++) {
+        var equals = cookies[i].indexOf("=");
+        var name = equals > -1 ? cookies[i].substr(0, equals) : cookies[i];
+        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+}
+    })
 });
-
-/* Istope Portfolio
- -----------------------------------------------*/
-jQuery(document).ready(function ($) {
-
-    if ($('.iso-box-wrapper').length > 0) {
-
-        var $container = $('.iso-box-wrapper'),
-            $imgs = $('.iso-box img');
-
-        $container.imagesLoaded(function () {
-
-            $container.isotope({
-                layoutMode: 'fitRows',
-                itemSelector: '.iso-box'
-            });
-
-            $imgs.load(function () {
-                $container.isotope('reLayout');
-            })
-
-        });
-
-    }
-
-});
-
 
 /* Navigation Bar
  -----------------------------------------------*/

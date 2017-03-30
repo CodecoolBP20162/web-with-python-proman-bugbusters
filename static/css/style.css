@@ -58,7 +58,7 @@ h1 {
     font-weight: 700;
 }
 
-h2, ul, {
+h2, ul{
   color: #ffffff;
   font-size: 1rem;
 }
@@ -115,7 +115,7 @@ img {
     margin: 2px;
 }
 
-.project-content::content {
+.project-content{
     padding: 10px 10px 10px 10px;
 }
 
@@ -856,6 +856,10 @@ footer {
     transform: scale(1.1);
 }
 
+#board-holder {
+    height: 1000px;
+}
+
 #in-progress {
     min-height: 500px;
     max-width: 270px;
@@ -882,6 +886,8 @@ footer {
     transform: scale(1.1);
 }
 
-
-
-
+.portlet-placeholder {
+border: 1px dotted black;
+margin: 0 1em 1em 0;
+height: 50px;
+}

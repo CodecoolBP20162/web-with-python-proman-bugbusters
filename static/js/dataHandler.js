@@ -13,13 +13,6 @@ var generateData = function () {
         boards.board2.cards[1] = { title: "Second card", status: "in-progress", elements: 'Some description', modified: new Date().toLocaleString() };
         boards.board2.cards[2] = { title: "Third card", status: "new", elements: 'Some description', modified: new Date().toLocaleString() };
 
-        // boards.board3 = { title: "Board #3", description: "Second board", timestamp: new Date().toLocaleString(), cards: [] };
-        // boards.board3.cards = [{}, {}, {}];
-        // boards.board3.cards[0] = { title: "First card", status: "new", elements: [1, 2, 3, 20], modified: new Date().toLocaleString() };
-        // boards.board3.cards[1] = { title: "Second card", status: "new", elements: [4, 5, 6], modified: new Date().toLocaleString() };
-        // boards.board3.cards[2] = { title: "Third card", status: "planning", elements: [7, 8, 9], modified: new Date().toLocaleString() };
-        // boards.board3.cards[3] = { title: "#4 card", status: "new", elements: [7, 8, 9], modified: new Date().toLocaleString() };
-        // boards.board3.cards[4] = { title: "#5 card", status: "new", elements: [7, 8, 9], modified: new Date().toLocaleString() };
         // Store
         // Convert to JSON file and save to storage
         localStorage.boards = JSON.stringify(boards);
@@ -38,43 +31,43 @@ var retrieveData = function (data) {
 };
 
 
-var generateEmptyBoard = function () {
-    var inputDiv = document.createElement('div');
-    inputDiv = decorateContext("portfolio-overlay portfolio-item", inputDiv);
-    var form = document.createElement("form");
-    var title = document.createElement("input");
-    title.setAttribute("id", "title");
-    title.setAttribute("type", "text");
-    title.setAttribute("min", 7);
-    title.setAttribute("max", 20);
-    title.setAttribute('required', 'true');
-    var description = document.createElement("input");
-    description.setAttribute("id", "description");
-    description.setAttribute("type", "text");
-    description.setAttribute("min", 14);
-    description.setAttribute("max", 50);
-    description.setAttribute('required', 'true');
-    var form_button = document.createElement('button');
-    form_button.setAttribute("onclick", "addNewBoard();");
-    form_button.appendChild(document.createTextNode('Submit'));
-    form.appendChild(title);
-    form.appendChild(document.createElement('br'));
-    form.appendChild(document.createElement('br'));
-    form.appendChild(description);
-    form.appendChild(document.createElement('br'));
-    form.appendChild(document.createElement('br'));
-    form.appendChild(form_button);
-    form = decorateContext("portfolio-overlay portfolio-item", form);
-    inputDiv.appendChild(form);
-    inputDiv = decorateContext("overlay portfolio-picture", inputDiv);
-    var text = document.createElement('h1');
-    var instructions = document.createTextNode('Create new card');
-    text.appendChild(instructions);
-    inputDiv.appendChild(text);
-    inputDiv = decorateContext("portfolio-thumb new-card portfolio-picture", inputDiv);
-    inputDiv = decorateContext("item iso-box col-lg-3 col-md-4 col-sm-6 col-xs-12", inputDiv);
-    document.getElementById("board-holder").appendChild(inputDiv);
-};
+// var generateEmptyBoard = function () {
+//     var inputDiv = document.createElement('div');
+//     inputDiv = decorateContext("portfolio-overlay portfolio-item", inputDiv);
+//     var form = document.createElement("form");
+//     var title = document.createElement("input");
+//     title.setAttribute("id", "title");
+//     title.setAttribute("type", "text");
+//     title.setAttribute("min", 7);
+//     title.setAttribute("max", 20);
+//     title.setAttribute('required', 'true');
+//     var description = document.createElement("input");
+//     description.setAttribute("id", "description");
+//     description.setAttribute("type", "text");
+//     description.setAttribute("min", 14);
+//     description.setAttribute("max", 50);
+//     description.setAttribute('required', 'true');
+//     var form_button = document.createElement('button');
+//     form_button.setAttribute("type", "button");
+//     form_button.setAttribute("onclick", "addNewBoard();");
+//     form_button.appendChild(document.createTextNode('Submit'));
+//     form.appendChild(title);
+//     form.appendChild(document.createElement('br'));
+//     form.appendChild(description);
+//     form.appendChild(document.createElement('br'));
+//     form.appendChild(form_button);
+//     form = decorateContext("portfolio-overlay portfolio-item", form);
+//     inputDiv.appendChild(form);
+//     inputDiv = decorateContext("overlay portfolio-picture", inputDiv);
+//     var text = document.createElement('h1');
+//     text.className = 'lead';
+//     var instructions = document.createTextNode('Create new card');
+//     text.appendChild(instructions);
+//     inputDiv.appendChild(text);
+//     inputDiv = decorateContext("portfolio-thumb new-card portfolio-picture", inputDiv);
+//     inputDiv = decorateContext("item iso-box col-lg-3 col-md-4 col-sm-6 col-xs-12", inputDiv);
+//     document.getElementById("board-holder").appendChild(inputDiv);
+// };
 
 var generateInput = function (name, min, max) {
     var input = document.createElement("input");
@@ -94,32 +87,30 @@ var getNewCardElement = function (num) {
 };
 
 
-var generateEmptyCard = function (count) {
-    var div = document.createElement('div');
-    var div = decorateContext("project-content", div);
-    var form = document.createElement('form');
-    var title = generateInput("card-title", 6, 20);
-    var new_element = generateInput("element");
-    var title_h2 = document.createTextNode("Card title");
-    var new_task = document.createTextNode("New task");
-    var button = document.createElement("button");
-    button.setAttribute("onclick", "addNewCard("+count+");");
-    form.appendChild(title_h2);
-    form.appendChild(title);
-    form.appendChild(new_task);
-    form.appendChild(new_element);
-    div.appendChild(form);
-    div = decorateContext("project project-radius draggable", div);
-    div = decorateContext("haljalmeg card card-" + count, div);
-    console.log(div);
-    return div;
-};
+// var generateEmptyCard = function (count) {
+//     var div = document.createElement('div');
+//     var div = decorateContext("project-content", div);
+//     var form = document.createElement('form');
+//     var title = generateInput("card-title", 6, 20);
+//     var new_element = generateInput("element");
+//     var title_h2 = document.createTextNode("Card title");
+//     var new_task = document.createTextNode("New task");
+//     var button = document.createElement("button");
+//     button.setAttribute("onclick", "addNewCard("+count+");");
+//     form.appendChild(title_h2);
+//     form.appendChild(title);
+//     form.appendChild(new_task);
+//     form.appendChild(new_element);
+//     div.appendChild(form);
+//     div = decorateContext("project project-radius draggable", div);
+//     div = decorateContext("haljalmeg card card-" + count, div);
+//     return div;
+// };
 
 
 var getBoards = function(data) {
     var allBoards = retrieveData(data);
     var j = 1;
-    generateEmptyBoard();
     for (var i in allBoards) {
         var projectContent = createProjectContent(allBoards[i]);
         var ediv = decorateContext("portfolio-thumb draggable", projectContent);
@@ -129,8 +120,6 @@ var getBoards = function(data) {
         var adiv = decorateContext(count, div);
         document.getElementById("board-holder").appendChild(adiv);
         getCards(allBoards[i].cards, count);
-        // var addCard = generateEmptyCard(count);
-        // document.getElementById("new").appendChild(addCard);
         j += 1;
   }
 };
@@ -173,6 +162,7 @@ var getCards = function(cards, boardnum) {
         var projectContent = document.createElement("div");
         projectContent.className = "project-content";
         var h1 = document.createElement("h2");
+        h1.className = 'text-center';
         var text = document.createTextNode(cards[card].title);
         h1.className = "lead";
         h1.appendChild(text);
@@ -185,35 +175,51 @@ var getCards = function(cards, boardnum) {
         var count = "card card-"+boardnum;
         decorated = decorateContext(count, decorated);
         decorated.setAttribute("style","display: none;");
-        document.getElementById(cards[card]['status']).appendChild(decorated);
-
+        document.getElementById(cards[card].status).appendChild(decorated);
     }
 };
 
-
-function Board(title, description) {
+var Board = function (title, description) {
     this.title = title;
     this.description = description;
     this.timestamp = new Date().toLocaleString();
     this.cards = [];
 };
 
-function Card(title) {
+var Card = function (title, new_task) {
     this.title = title;
-    this.status = "status-new";
+    this.status = "new";
     this.timestamp = new Date().toLocaleString();
-    this.elements = [];
+    this.elements = new_task;
 };
 
-function  addNewCard(board) {
+var addNewCard = function (board) {
     var boards = retrieveData("boards");
-    var name = "board-" + (Object.keys(boards).length + 1).toString();
-    var title =  document.getElementById("title");
-    boards[board].cards = new Card(title);
+    var title =  document.getElementById("card-title").value;
+    var new_task = document.getElementById("new_task").value;
+    var card = new Card(title, new_task);
+    boards[board].cards.push(card);
+    var projectContent = document.createElement("div");
+    projectContent.className = "project-content";
+    var h1 = document.createElement("h2");
+    h1.className = 'text-center';
+    var text = document.createTextNode(title);
+    h1.className = "lead";
+    h1.appendChild(text);
+    var p = document.createTextNode(new_task);
+    projectContent.appendChild(h1);
+    projectContent.appendChild(p);
+    var color = ("project project-radius draggable");
+    var decorated = decorateContext(color, projectContent);
+    decorated.setAttribute("draggable", true);
+    var count = "card card-"+board;
+    decorated = decorateContext(count, decorated);
+    decorated.setAttribute("style","display: block;");
+    document.getElementById(card.status).appendChild(decorated);
     localStorage.boards = JSON.stringify(boards);
 };
 
-function  addNewElement(card) {
+var addNewElement = function (card) {
     var boards = retrieveData("boards");
     var name = "board-" + (Object.keys(boards).length + 1).toString();
     var title =  document.getElementById("new_element");
@@ -221,19 +227,28 @@ function  addNewElement(card) {
     localStorage.boards = JSON.stringify(boards);
 };
 
-function  addNewBoard() {
+var addNewBoard = function() {
     var boards = retrieveData("boards");
-    var name = "board-" + (Object.keys(boards).length + 1);
+    var name = "board" + (Object.keys(boards).length + 1);
     var title =  document.getElementById("title").value;
     var description =  document.getElementById("description").value;
     boards[name] = new Board(title, description);
+    var projectContent = createProjectContent(boards[name]);
+    var ediv = decorateContext("portfolio-thumb draggable", projectContent);
+    ediv.setAttribute('draggable', 'true');
+    var div = decorateContext("item iso-box col-lg-3 col-md-4 col-sm-6 col-xs-12", ediv);
+    var count = "board"+(Object.keys(boards).length).toString();
+    var adiv = decorateContext(count, div);
+    adiv.setAttribute("data-toggle", "modal");
+    adiv.setAttribute("data-target", ".board-modal");
+    adiv.setAttribute("draggable", "true");
+    adiv.setAttribute("style", "cursor: pointer");
+    document.getElementById("board-holder").appendChild(adiv);
+    getCards(boards[name].cards, count);
+    document.getElementById("description").value = ("");
+    document.getElementById("title").value = ("");
     localStorage.boards = JSON.stringify(boards);
 };
 
-generateData();
-var boards = retrieveData("boards");
+//generateData();
 getBoards("boards");
-
-console.log(boards)
-
-//document.getElementById("result").outerHTML = boards.board1.cards[0].modified;
