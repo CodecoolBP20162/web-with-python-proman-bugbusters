@@ -92,8 +92,7 @@ def index():
     return render_template("index.html")
 
 
-# get_all_data()
+init_db()
+build_db()
 if __name__ == "__main__":
-    init_db()
-    build_db()
     app.run(debug=True)
